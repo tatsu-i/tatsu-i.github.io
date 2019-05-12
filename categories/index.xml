@@ -10,5 +10,23 @@
 	<atom:link href="https://tatsui-techblog.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Docker</title>
+      <link>https://tatsui-techblog.com/categories/docker/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://tatsui-techblog.com/categories/elasticsearch/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

@@ -6,9 +6,46 @@
     <description>Recent content in Tags on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
+    <lastBuildDate>Sun, 12 May 2019 15:42:36 +0900</lastBuildDate>
     
 	<atom:link href="https://tatsui-techblog.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://tatsui-techblog.com/tags/docker/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker Compose</title>
+      <link>https://tatsui-techblog.com/tags/docker-compose/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/tags/docker-compose/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://tatsui-techblog.com/tags/elasticsearch/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kibana</title>
+      <link>https://tatsui-techblog.com/tags/kibana/</link>
+      <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/tags/kibana/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
