@@ -3,22 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://tatsui-techblog.com/archives/</loc>
+    <loc>https://tatsui-techblog.com/archives/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tatsui-techblog.com/categories/</loc>
+    <loc>https://tatsui-techblog.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tatsui-techblog.com/tags/</loc>
+    <loc>https://tatsui-techblog.com/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tatsui-techblog.com/</loc>
+    <loc>https://tatsui-techblog.com/</loc>
     <priority>0</priority>
   </url>
   
