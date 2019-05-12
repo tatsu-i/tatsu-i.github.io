@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tatsui-techblog.com/2019/05/docker%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6elasticsearch7.0%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/</loc>
+    <loc>https://tatsui-techblog.com/2019/05/es7/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
   </url>
   
@@ -18,13 +18,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/docker/</loc>
+    <loc>https://tatsui-techblog.com/categories/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/docker/</loc>
+    <loc>https://tatsui-techblog.com/tags/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -36,13 +36,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
+    <loc>https://tatsui-techblog.com/categories/elasticsearch/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/elasticsearch/</loc>
+    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
