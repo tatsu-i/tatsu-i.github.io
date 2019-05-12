@@ -286,7 +286,7 @@ ga('send', 'pageview');
 
 <p>elastic stack(x-pack)を利用する場合は<code>-oss:7.0.0</code>を<code>:7.0.0</code>に置き換える必要があります。</p>
 
-<pre><code>version: '3.4'
+<pre><code class="language-yaml">version: '3.4'
 
 x-es7-common: &amp;es7-common
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0
@@ -370,19 +370,19 @@ services:
 
 <p>dockerを起動します。</p>
 
-<pre><code>$ docker-compose up -d
+<pre><code class="language-bash">$ docker-compose up -d
 </code></pre>
 
 <p><code>{&quot;message&quot;: &quot;started&quot;}</code>というメッセージが表示されるまで待ちます。</p>
 
-<pre><code>$ docker-compose logs -f elasticsearch
+<pre><code class="language-bash">$ docker-compose logs -f elasticsearch
 ...
 elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2019-05-12T15:14:17,587+0000&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;elasticsearch&quot;, &quot;cluster.uuid&quot;: &quot;9AIA4GPNTXegM81GvGx9yw&quot;, &quot;node.id&quot;: &quot;Sze63DhdRDus_m4dsjLFGQ&quot;,  &quot;message&quot;: &quot;started&quot;  }
 </code></pre>
 
 <p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
 
-<pre><code>$ curl http://127.0.0.1:9200/_cat/nodes
+<pre><code class="language-bash">$ curl http://127.0.0.1:9200/_cat/nodes
 172.25.0.5 30 98 62 9.31 5.48 3.14 m * elasticsearch
 172.25.0.3 22 98 64 9.31 5.48 3.14 d - 34a1ac655be6
 172.25.0.4 27 98 59 9.31 5.48 3.14 d - 4b8e00827181

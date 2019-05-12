@@ -18,13 +18,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/docker/</loc>
+    <loc>https://tatsui-techblog.com/tags/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/docker/</loc>
+    <loc>https://tatsui-techblog.com/categories/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -36,13 +36,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/elasticsearch/</loc>
+    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
+    <loc>https://tatsui-techblog.com/categories/elasticsearch/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
