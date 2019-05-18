@@ -70,6 +70,18 @@
   </url>
   
   <url>
+    <loc>https://tatsui-techblog.com/tags/forensic/</loc>
+    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/forensic/</loc>
+    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tatsui-techblog.com/tags/kibana/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
@@ -96,18 +108,6 @@
   <url>
     <loc>https://tatsui-techblog.com/tags/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tatsui-techblog.com/tags/test/</loc>
-    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tatsui-techblog.com/categories/test/</loc>
-    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
     <priority>0</priority>
   </url>
   
