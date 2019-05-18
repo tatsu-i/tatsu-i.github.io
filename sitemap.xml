@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://tatsui-techblog.com/2019/05/wazuh/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tatsui-techblog.com/2019/05/es7/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
   </url>
@@ -18,13 +23,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/docker/</loc>
+    <loc>https://tatsui-techblog.com/categories/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/docker/</loc>
+    <loc>https://tatsui-techblog.com/tags/docker/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -36,14 +41,26 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
-    <lastmod>2019-05-12T15:42:36+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/categories/edr/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/tags/edr/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tatsui-techblog.com/categories/elasticsearch/</loc>
     <lastmod>2019-05-12T15:42:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -55,7 +72,19 @@
   
   <url>
     <loc>https://tatsui-techblog.com/post/</loc>
-    <lastmod>2019-05-12T15:42:36+09:00</lastmod>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/security/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/tags/security/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -67,7 +96,7 @@
   
   <url>
     <loc>https://tatsui-techblog.com/</loc>
-    <lastmod>2019-05-12T15:42:36+09:00</lastmod>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
   

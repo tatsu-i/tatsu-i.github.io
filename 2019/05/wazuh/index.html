@@ -7,52 +7,46 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
-<meta name="keywords" content="docker, docker-compose, elasticsearch7, kibana7, elasticsearch, kibana">
-<meta name="description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
-
+<meta name="keywords" content="">
+<meta name="description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
 ">
 
 
-<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
-
+<meta property="og:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
 ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
-<meta name="twitter:title" content="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
-<meta property="og:url" content="https://tatsui-techblog.com/2019/05/es7/">
-<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/es7/">
+<meta property="og:title" content="オープンソースで構築するEDR">
+<meta name="twitter:title" content="オープンソースで構築するEDR">
+<meta property="og:url" content="https://tatsui-techblog.com/2019/05/wazuh/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/wazuh/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
-
+<meta property="og:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
 ">
-<meta name="twitter:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
-
+<meta name="twitter:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
 ">
 <meta property="og:locale" content="ja">
 
   
-    <meta property="article:published_time" content="2019-05-12T15:42:36">
+    <meta property="article:published_time" content="2019-05-18T13:23:09">
   
   
-    <meta property="article:modified_time" content="2019-05-12T15:42:36">
+    <meta property="article:modified_time" content="2019-05-18T13:23:09">
   
-  
-  
-    
-      <meta property="article:section" content="elasticsearch">
-    
-      <meta property="article:section" content="docker">
-    
   
   
     
-      <meta property="article:tag" content="docker">
+      <meta property="article:section" content="security">
     
-      <meta property="article:tag" content="docker-compose">
+      <meta property="article:section" content="edr">
+    
+  
+  
+    
+      <meta property="article:tag" content="security">
+    
+      <meta property="article:tag" content="edr">
     
       <meta property="article:tag" content="elasticsearch">
-    
-      <meta property="article:tag" content="kibana">
     
   
 
@@ -65,8 +59,8 @@
 
 
 
-  <meta property="og:image" content="https://tatsui-techblog.com/img/docker.jpg">
-  <meta property="twitter:image" content="https://tatsui-techblog.com/img/docker.jpg">
+  <meta property="og:image" content="https://tatsui-techblog.com/img/security.jpg">
+  <meta property="twitter:image" content="https://tatsui-techblog.com/img/security.jpg">
 
 
 
@@ -76,14 +70,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
 
 
-    <title>Dockerを使ってElasticsearch7.0のクラスタを作ってみる</title>
+    <title>オープンソースで構築するEDR</title>
 
     <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/es7/">
+    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/wazuh/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -245,15 +239,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      Dockerを使ってElasticsearch7.0のクラスタを作ってみる
+      オープンソースで構築するEDR
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-05-12T15:42:36&#43;09:00">
+      <time itemprop="datePublished" datetime="2019-05-18T13:23:09&#43;09:00">
         
-  5 12, 2019
+  5 18, 2019
 
       </time>
     
@@ -262,9 +256,9 @@ ga('send', 'pageview');
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/elasticsearch">elasticsearch</a>, 
+      <a class="category-link" href="https://tatsui-techblog.com/categories/security">security</a>, 
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/docker">docker</a>
+      <a class="category-link" href="https://tatsui-techblog.com/categories/edr">edr</a>
     
   
 
@@ -274,128 +268,105 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+              <p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p>
 
-<p></p>
+<p><a href="https://wazuh.com/">公式のHP</a>によるとWazuhの備えている機能は下記の通りです</p>
 
-<h2 id="docker-composeファイルの作成">docker-composeファイルの作成</h2>
+<ul>
+<li>Security Analytics</li>
+<li>Intrusion Detection</li>
+<li>Log Data Analysis</li>
+<li>File Integrity Monitoring</li>
+<li>Vulnerability Detection</li>
+<li>Configuration Assessment</li>
+<li>Incident Response</li>
+<li>Regulatory Compliance</li>
+<li>Cloud Security Monitoring</li>
+</ul>
 
-<p>はじめに<code>docker-compose.yml</code>という名前のファイルを下記の内容で作成します。<br>
-同じイメージを使って複数のノードを生成するため、Yamlが冗長化しないように<br>
-アンカーとエイリアスを用いた記述を行っています。</p>
+<h2 id="あらかじめ準備しておく環境">あらかじめ準備しておく環境</h2>
 
-<p>elastic stack(x-pack)を利用する場合は<code>-oss:7.0.0</code>を<code>:7.0.0</code>に置き換える必要があります。</p>
+<ul>
+<li>windows7 (VMでも可)</li>
+<li>DockerがインストールされたLinuxマシン
 
-<pre><code class="language-yaml">version: '3.4'
+<ul>
+<li>Ubuntu 18.04に構築</li>
+<li>docker version 18.09.6</li>
+<li>docker-compose version 1.17.1</li>
+</ul></li>
+</ul>
 
-x-es7-common: &amp;es7-common
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
+<h2 id="wazuh-managerのセットアップ">wazuh managerのセットアップ</h2>
 
-x-es7-option: &amp;es7-option
-      # クラスタ名
-      cluster.name: 'docker-cluster'
-      # ノードあたりの割当メモリ
-      ES_JAVA_OPTS: '-Xms512m -Xmx512m'
-      # スワップ無効化
-      bootstrap.memory_lock: 'true'
-
-# Dataノード
-x-es7-node: &amp;es7-node
-    &lt;&lt;: *es7-common
-    environment:
-      &lt;&lt;: *es7-option
-      node.master: &quot;false&quot;
-      node.data: &quot;true&quot;
-      node.ingest: &quot;false&quot;
-      discovery.seed_hosts: &quot;elasticsearch&quot;
-
-# Masterノード
-x-es7-master: &amp;es7-master
-    &lt;&lt;: *es7-common
-    environment:
-      &lt;&lt;: *es7-option
-      node.master: &quot;true&quot;
-      node.data: &quot;false&quot;
-      node.ingest: &quot;false&quot;
-      cluster.initial_master_nodes: &quot;elasticsearch&quot;
-      node.name: &quot;elasticsearch&quot;
-    # ノード数に応じて変更する
-    depends_on: 
-      - &quot;elasticsearch-data1&quot;
-      - &quot;elasticsearch-data2&quot;
-      - &quot;elasticsearch-data3&quot;
-
-# ノード数に応じて変更する
-volumes:
-  es7-master1:
-  es7-data1:
-  es7-data2:
-  es7-data3:
-
-services:
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana-oss:7.0.0
-    ports: [ '5601:5601']
-    depends_on: [ 'elasticsearch' ]
-    environment:
-      ELASTICSEARCH_URL: http://elasticsearch:9200
-
-  elasticsearch:
-    ports:
-      - &quot;9200:9200&quot;
-    volumes: [ 'es7-master1:/usr/share/elasticsearch/data' ]
-    &lt;&lt;: *es7-master
-
-  # ノード数に応じて変更する
-  elasticsearch-data1:
-    volumes: [ 'es7-data1:/usr/share/elasticsearch/data' ]
-    &lt;&lt;: *es7-node
-
-  elasticsearch-data2:
-    volumes: [ 'es7-data2:/usr/share/elasticsearch/data' ]
-    &lt;&lt;: *es7-node
-
-  elasticsearch-data3:
-    volumes: [ 'es7-data3:/usr/share/elasticsearch/data' ]
-    &lt;&lt;: *es7-node
-
+<pre><code class="language-bash">$ git clone https://github.com/wazuh/wazuh-docker
+$ cd wazuh-docker
+$ echo 'vm.max_map_count = 262144' | sudo tee -a /etc/sysctl.conf
+$ sudo sysctl -p
+$ docker-compose up -d
 </code></pre>
 
-<h2 id="動作確認">動作確認</h2>
+<p>起動が完了したら、コンテナを動かしているホストへブラウザから接続してみます。
+私の環境ではコンテナを<code>192.168.11.30</code>で実行しているため接続先は下記のようになります</p>
 
-<p>dockerを起動します。</p>
+<p><code>https://192.168.11.30</code></p>
 
-<pre><code class="language-bash">$ docker-compose up -d
+<p>またユーザ名とパスワードを聞かれるので下記のように入力します。</p>
+
+<pre><code>user: foo
+password: bar
 </code></pre>
 
-<p><code>{&quot;message&quot;: &quot;started&quot;}</code>というメッセージが表示されるまで待ちます。</p>
+<p><img src="https://i.imgur.com/tggNUAz.png" alt="" /></p>
 
-<pre><code class="language-bash">$ docker-compose logs -f elasticsearch
-...
-elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2019-05-12T15:14:17,587+0000&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;elasticsearch&quot;, &quot;cluster.uuid&quot;: &quot;9AIA4GPNTXegM81GvGx9yw&quot;, &quot;node.id&quot;: &quot;Sze63DhdRDus_m4dsjLFGQ&quot;,  &quot;message&quot;: &quot;started&quot;  }
+<p>左側サイドバーのWazuhをクリックすると下のような画面が表示されます。こちらが<code>Wazuh-manager</code>とよばれる、エンドポイントの管理画面になります。
+<img src="https://i.imgur.com/tJjytLU.png" alt="" /></p>
+
+<h2 id="wazuh-agentをインストール">wazuh agentをインストール</h2>
+
+<p>wazuh-managerにagentを登録するために、wazuh-agentをインストールします。</p>
+
+<h3 id="対応しているagent一覧">対応しているagent一覧</h3>
+
+<p><a href="https://documentation.wazuh.com/current/installation-guide/packages-list/index.html">https://documentation.wazuh.com/current/installation-guide/packages-list/index.html</a></p>
+
+<p>今回はwindowsで実行するので
+windows版をダウンロードします。</p>
+
+<p><img src="https://i.imgur.com/0iwrOr4.png" alt="" /></p>
+
+<p>ダウンロードが完了したらファイルを実行し、ウィザードに従ってインストールしていきます。
+<img src="https://i.imgur.com/AuEjWe3.png" alt="" /></p>
+
+<p>Run Agent configuration interfaceにチェックをいれてFinishボタンを押します。
+<img src="https://i.imgur.com/Uc40HDW.png" alt="" /></p>
+
+<p>次のような画面が表示されたらWindowsのIPアドレスを確認します。
+私の環境だと<code>192.168.11.252</code>でした。
+<img src="https://i.imgur.com/D6JRjtb.png" alt="" /></p>
+
+<p>LinuxからRestAPIを使ってAgentを登録を行います。</p>
+
+<pre><code class="language-bash">curl -u foo:bar -k -X POST -d 'name=NewAgent&amp;ip=192.168.11.252' https://192.168.11.30:55000/agents
+
+{&quot;error&quot;:0,&quot;data&quot;:{&quot;id&quot;:&quot;001&quot;,&quot;key&quot;:&quot;MDAxIE5ld0FnZW50IDE5Mi4xNjguMTEuMjUyIGQzZTgxOWY0YWVkYzQ4MWJmOTcxNDg3OWUwNGM1ZDQwNzE5ZWE5YTcwMmI4ZjllNTdhMTE5YzNiYTgxZGQ2NWQ=&quot;}}                                             
 </code></pre>
 
-<p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
+<p>先程出力されたkeyとwazuh-manager(コンテナを実行しているホスト)のipアドレスを入力し<br/>
+saveボタンをクリックします
+<img src="https://i.imgur.com/C1Cdw7l.png" alt="" /></p>
 
-<pre><code class="language-bash">$ curl http://127.0.0.1:9200/_cat/nodes
-172.25.0.5 30 98 62 9.31 5.48 3.14 m * elasticsearch
-172.25.0.3 22 98 64 9.31 5.48 3.14 d - 34a1ac655be6
-172.25.0.4 27 98 59 9.31 5.48 3.14 d - 4b8e00827181
-172.25.0.2 26 98 64 9.31 5.48 3.14 d - ca4945863dee
-</code></pre>
+<p>wazuh-managerのagentsからwindows7のマシンが登録されている確認できます。
+<img src="https://i.imgur.com/P6mTW3w.png" alt="" /></p>
 
-<h2 id="ブラウザからkibanaにアクセスしてみる">ブラウザからKibanaにアクセスしてみる</h2>
+<p>wazuh-managerの画面左上の<code>Overview</code>-&gt; <code>Security events</code>と進んでいくと、セキュリティ関連のイベントが確認できます。
+<img src="https://i.imgur.com/VW6YxHC.png" alt="" /></p>
 
-<p>dockerを動作させているマシンのブラウザから<a href="http://127.0.0.1:5601">http://127.0.0.1:5601</a>にアクセスすると、Kibanaの画面が表示されます。</p>
+<h2 id="最後に">最後に</h2>
 
-<p><img src="https://tatsui-techblog.com/img/es7/kibana.png" alt="kibana" /></p>
-
-<p>サンプルデータが必要ない場合は<code>Explore on my own</code>をクリックすると利用が開始します。</p>
+<p>今回はOSSで手軽にはじめられるEDRの構築を行いました。
+次回は実際に攻撃を行い、どのようなログが残るのか検証してみたいと思います。</p>
               
             </div>
           </div>
@@ -407,13 +378,11 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">タグ</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/docker/">docker</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/security/">security</a>
 
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/docker-compose/">docker-compose</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/edr/">edr</a>
 
   <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/elasticsearch/">elasticsearch</a>
-
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/kibana/">kibana</a>
 
                   </div>
                 
@@ -426,7 +395,7 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -434,7 +403,7 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -452,13 +421,13 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/es7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/wazuh/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/es7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/wazuh/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -506,7 +475,7 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -514,7 +483,7 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -532,13 +501,13 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/es7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/wazuh/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/es7/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/wazuh/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -568,13 +537,13 @@ elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fes7%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwazuh%2F">
           <i class="fa fa-twitter"></i><span>Twitterで共有</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fes7%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwazuh%2F">
           <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
         </a>
       </li>
@@ -731,9 +700,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/es7\/';
+          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/wazuh\/';
           
-            this.page.identifier = '\/2019\/05\/es7\/'
+            this.page.identifier = '\/2019\/05\/wazuh\/'
           
         };
         (function() {

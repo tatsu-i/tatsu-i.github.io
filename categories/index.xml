@@ -20,11 +20,29 @@
     </item>
     
     <item>
+      <title>Edr</title>
+      <link>https://tatsui-techblog.com/categories/edr/</link>
+      <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/edr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Elasticsearch</title>
       <link>https://tatsui-techblog.com/categories/elasticsearch/</link>
       <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
       
       <guid>https://tatsui-techblog.com/categories/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>https://tatsui-techblog.com/categories/security/</link>
+      <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/security/</guid>
       <description></description>
     </item>
     

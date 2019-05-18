@@ -6,10 +6,20 @@
     <description>Recent content in Elasticsearch on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 12 May 2019 15:42:36 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 18 May 2019 13:23:09 +0900</lastBuildDate>
     
 	<atom:link href="https://tatsui-techblog.com/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>オープンソースで構築するEDR</title>
+      <link>https://tatsui-techblog.com/2019/05/wazuh/</link>
+      <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/2019/05/wazuh/</guid>
+      <description>&lt;p&gt;Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Dockerを使ってElasticsearch7.0のクラスタを作ってみる</title>
