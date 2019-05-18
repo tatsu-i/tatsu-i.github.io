@@ -8,45 +8,83 @@
 <meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
-<meta name="description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+<meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
+
 ">
 
 
-<meta property="og:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
+
 ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="オープンソースで構築するEDR">
-<meta name="twitter:title" content="オープンソースで構築するEDR">
-<meta property="og:url" content="https://tatsui-techblog.com/2019/05/wazuh/">
-<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/wazuh/">
+<meta property="og:title" content="自宅ではじめるディスクフォレンジック">
+<meta name="twitter:title" content="自宅ではじめるディスクフォレンジック">
+<meta property="og:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
+
 ">
-<meta name="twitter:description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+<meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
+
 ">
 <meta property="og:locale" content="ja">
 
   
-    <meta property="article:published_time" content="2019-05-18T13:23:09">
+    <meta property="article:published_time" content="2019-05-17T22:06:29">
   
   
-    <meta property="article:modified_time" content="2019-05-18T13:23:09">
+    <meta property="article:modified_time" content="2019-05-17T22:06:29">
   
   
   
     
-      <meta property="article:section" content="security">
-    
-      <meta property="article:section" content="edr">
+      <meta property="article:section" content="test">
     
   
   
     
-      <meta property="article:tag" content="security">
-    
-      <meta property="article:tag" content="edr">
-    
-      <meta property="article:tag" content="elasticsearch">
+      <meta property="article:tag" content="test">
     
   
 
@@ -59,8 +97,8 @@
 
 
 
-  <meta property="og:image" content="https://tatsui-techblog.com/img/security.jpg">
-  <meta property="twitter:image" content="https://tatsui-techblog.com/img/security.jpg">
+  <meta property="og:image" content="https://tatsui-techblog.com/img/security2.jpg">
+  <meta property="twitter:image" content="https://tatsui-techblog.com/img/security2.jpg">
 
 
 
@@ -70,14 +108,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
 
 
-    <title>オープンソースで構築するEDR</title>
+    <title>自宅ではじめるディスクフォレンジック</title>
 
     <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/wazuh/">
+    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/diskforensic/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -239,15 +277,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      オープンソースで構築するEDR
+      自宅ではじめるディスクフォレンジック
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-05-18T13:23:09&#43;09:00">
+      <time itemprop="datePublished" datetime="2019-05-17T22:06:29&#43;09:00">
         
-  5 18, 2019
+  5 17, 2019
 
       </time>
     
@@ -256,9 +294,7 @@ ga('send', 'pageview');
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/security">security</a>, 
-    
-      <a class="category-link" href="https://tatsui-techblog.com/categories/edr">edr</a>
+      <a class="category-link" href="https://tatsui-techblog.com/categories/test">test</a>
     
   
 
@@ -268,105 +304,94 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
-</p>
-
-<p><a href="https://wazuh.com/">公式のHP</a>によるとWazuhの備えている機能は下記の通りです</p>
+              <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+<code>ディスクフォレンジック</code>と呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます</p>
 
 <ul>
-<li>Security Analytics</li>
-<li>Intrusion Detection</li>
-<li>Log Data Analysis</li>
-<li>File Integrity Monitoring</li>
-<li>Vulnerability Detection</li>
-<li>Configuration Assessment</li>
-<li>Incident Response</li>
-<li>Regulatory Compliance</li>
-<li>Cloud Security Monitoring</li>
+<li>調査対象の選定</li>
+<li>調査媒体の保全</li>
+<li>フォレンジック調査</li>
 </ul>
 
-<h2 id="あらかじめ準備しておく環境">あらかじめ準備しておく環境</h2>
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p>
+
+<h2 id="準備するもの">準備するもの</h2>
 
 <ul>
-<li>windows7 (VMでも可)</li>
-<li>DockerがインストールされたLinuxマシン
-
-<ul>
-<li>Ubuntu 18.04に構築</li>
-<li>docker version 18.09.6</li>
-<li>docker-compose version 1.17.1</li>
-</ul></li>
+<li>調査対象のマシン</li>
+<li>CD-R (VMイメージがある場合は必要なし)</li>
 </ul>
 
-<h2 id="wazuh-managerのセットアップ">wazuh managerのセットアップ</h2>
+<h2 id="ディスクイメージの作成">ディスクイメージの作成</h2>
 
-<pre><code class="language-bash">$ git clone https://github.com/wazuh/wazuh-docker
-$ cd wazuh-docker
-$ echo 'vm.max_map_count = 262144' | sudo tee -a /etc/sysctl.conf
-$ sudo sysctl -p
-$ docker-compose up -d
-</code></pre>
+<p>OSFCloneのISOイメージをダウンロードします。</p>
 
-<p>起動が完了したら、コンテナを動かしているホストへブラウザから接続してみます。
-私の環境ではコンテナを<code>192.168.11.30</code>で実行しているため接続先は下記のようになります</p>
+<p><a href="https://www.osforensics.com/tools/create-disk-images.html">https://www.osforensics.com/tools/create-disk-images.html</a></p>
 
-<p><code>https://192.168.11.30</code></p>
+<p>ダウンロードが完了したらISOをCD-Rへ書き込みます。</p>
 
-<p>またユーザ名とパスワードを聞かれるので下記のように入力します。</p>
+<h2 id="調査媒体の保全">調査媒体の保全</h2>
 
-<pre><code>user: foo
-password: bar
-</code></pre>
+<p>マルウェアに感染したマシンへCD-Rを挿入し起動します。
+私の環境では前回の記事で作成したVMイメージにISOファイルをDVDドライブにマウントさせ起動しました。</p>
 
-<p><img src="https://i.imgur.com/tggNUAz.png" alt="" /></p>
+<p>osfcloneが起動すると次のような画面が表示されます。
+<img src="https://i.imgur.com/ROmD7Fs.png" alt="" /></p>
 
-<p>左側サイドバーのWazuhをクリックすると下のような画面が表示されます。こちらが<code>Wazuh-manager</code>とよばれる、エンドポイントの管理画面になります。
-<img src="https://i.imgur.com/tJjytLU.png" alt="" /></p>
+<p>ディスクイメージを保存したいので<code>2</code>と入力して<code>Enter</code>を押します。
+<img src="https://i.imgur.com/qfGYKsk.png" alt="" /></p>
 
-<h2 id="wazuh-agentをインストール">wazuh agentをインストール</h2>
+<p>出力形式は下記の3つから選択できます。</p>
 
-<p>wazuh-managerにagentを登録するために、wazuh-agentをインストールします。</p>
+<ul>
+<li>Raw (dd)</li>
+<li>EWF : Expert Witness Format</li>
+<li>AFF : Advanced Forensic Format</li>
+</ul>
 
-<h3 id="対応しているagent一覧">対応しているagent一覧</h3>
+<p>今回は圧縮率が高く取得時間が早いEWFを選択します。
+<img src="https://i.imgur.com/f8vAgpY.png" alt="" /></p>
 
-<p><a href="https://documentation.wazuh.com/current/installation-guide/packages-list/index.html">https://documentation.wazuh.com/current/installation-guide/packages-list/index.html</a></p>
+<p>続いてイメージ化するディスクを選択します。
+<img src="https://i.imgur.com/czAkecw.png" alt="" /></p>
 
-<p>今回はwindowsで実行するので
-windows版をダウンロードします。</p>
+<p>適切なデバイスを選択してください。
+<img src="https://i.imgur.com/Y6cMUfC.png" alt="" /></p>
 
-<p><img src="https://i.imgur.com/0iwrOr4.png" alt="" /></p>
+<p>次にイメージファイルを保存するパーティションを選択します。
+<img src="https://i.imgur.com/bjcpCqE.png" alt="" /></p>
 
-<p>ダウンロードが完了したらファイルを実行し、ウィザードに従ってインストールしていきます。
-<img src="https://i.imgur.com/AuEjWe3.png" alt="" /></p>
+<p>保存先のパーティションはEXT4でフォーマットしてあります。
+<img src="https://i.imgur.com/ia2kKyu.png" alt="" /></p>
 
-<p>Run Agent configuration interfaceにチェックをいれてFinishボタンを押します。
-<img src="https://i.imgur.com/Uc40HDW.png" alt="" /></p>
+<p>次にイメージの名前を変更します。
+<code>3</code>を入力したあとに<code>Enter</code>を押します。
+<img src="https://i.imgur.com/USfU3Qr.png" alt="" /></p>
 
-<p>次のような画面が表示されたらWindowsのIPアドレスを確認します。
-私の環境だと<code>192.168.11.252</code>でした。
-<img src="https://i.imgur.com/D6JRjtb.png" alt="" /></p>
+<p>例えば<code>windows</code>という名前をつけて保存してみます。
+<img src="https://i.imgur.com/9Jq6xmX.png" alt="" /></p>
 
-<p>LinuxからRestAPIを使ってAgentを登録を行います。</p>
+<p>Parametersを確認してSource,Destination,Image filenameが間違っていないか確認します。
+<img src="https://i.imgur.com/ATxqpiM.png" alt="" /></p>
 
-<pre><code class="language-bash">curl -u foo:bar -k -X POST -d 'name=NewAgent&amp;ip=192.168.11.252' https://192.168.11.30:55000/agents
+<p>問題がなければ<code>9</code>を入力し<code>Enter</code>を押してください。
+<img src="https://i.imgur.com/olexmiC.png" alt="" /></p>
 
-{&quot;error&quot;:0,&quot;data&quot;:{&quot;id&quot;:&quot;001&quot;,&quot;key&quot;:&quot;MDAxIE5ld0FnZW50IDE5Mi4xNjguMTEuMjUyIGQzZTgxOWY0YWVkYzQ4MWJmOTcxNDg3OWUwNGM1ZDQwNzE5ZWE5YTcwMmI4ZjllNTdhMTE5YzNiYTgxZGQ2NWQ=&quot;}}                                             
-</code></pre>
+<p>色々と質問されますがEnterを押し続けて問題ないです。
+質問に回答したらイメージの取得が開始します。
+<img src="https://i.imgur.com/oNhU3GY.png" alt="" /></p>
 
-<p>先程出力されたkeyとwazuh-manager(コンテナを実行しているホスト)のipアドレスを入力し<br/>
-saveボタンをクリックします
-<img src="https://i.imgur.com/C1Cdw7l.png" alt="" /></p>
-
-<p>wazuh-managerのagentsからwindows7のマシンが登録されている確認できます。
-<img src="https://i.imgur.com/P6mTW3w.png" alt="" /></p>
-
-<p>wazuh-managerの画面左上の<code>Overview</code>-&gt; <code>Security events</code>と進んでいくと、セキュリティ関連のイベントが確認できます。
-<img src="https://i.imgur.com/VW6YxHC.png" alt="" /></p>
+<p>進捗率が100%になったらEnterを押してメインメニューへ戻り
+shutdownします。
+<img src="https://i.imgur.com/OnkoFW2.png" alt="" /></p>
 
 <h2 id="最後に">最後に</h2>
 
-<p>今回はOSSで手軽にはじめられるEDRの構築を行いました。
-次回は実際に攻撃を行い、どのようなログが残るのか検証してみたいと思います。</p>
+<p>今回はCD-Rから起動することでオペレーティングシステム環境にログを残すことなくディスクの内容を別の媒体へコピーしました。
+次回は保全したディスクイメージを解析するフォレンジック調査を実践してみたいと思います。</p>
               
             </div>
           </div>
@@ -378,11 +403,7 @@ saveボタンをクリックします
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">タグ</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/security/">security</a>
-
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/edr/">edr</a>
-
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/elasticsearch/">elasticsearch</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/test/">test</a>
 
                   </div>
                 
@@ -395,7 +416,7 @@ saveボタンをクリックします
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -403,7 +424,7 @@ saveボタンをクリックします
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/diskforensic/" data-tooltip="自宅ではじめるディスクフォレンジック">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -421,13 +442,13 @@ saveボタンをクリックします
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/wazuh/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/wazuh/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -475,7 +496,7 @@ saveボタンをクリックします
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -483,7 +504,7 @@ saveボタンをクリックします
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/diskforensic/" data-tooltip="自宅ではじめるディスクフォレンジック">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -501,13 +522,13 @@ saveボタンをクリックします
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/wazuh/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/wazuh/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -537,13 +558,13 @@ saveボタンをクリックします
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwazuh%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
           <i class="fa fa-twitter"></i><span>Twitterで共有</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwazuh%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
           <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
         </a>
       </li>
@@ -729,9 +750,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/wazuh\/';
+          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/diskforensic\/';
           
-            this.page.identifier = '\/2019\/05\/wazuh\/'
+            this.page.identifier = '\/2019\/05\/diskforensic\/'
           
         };
         (function() {
