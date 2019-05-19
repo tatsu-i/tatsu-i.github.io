@@ -8,87 +8,71 @@
 <meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
-<meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
+<meta name="description" content="本記事では下記のテーマについて解説したいと思います。
 
 
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
+elasticsearchとkibanaの構築
+winlogbeatのインストール
+kibanaダッシュボードの作成
 
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
 
 ">
 
 
-<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
+<meta property="og:description" content="本記事では下記のテーマについて解説したいと思います。
 
 
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
+elasticsearchとkibanaの構築
+winlogbeatのインストール
+kibanaダッシュボードの作成
 
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
 
 ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自宅ではじめるディスクフォレンジック">
-<meta name="twitter:title" content="自宅ではじめるディスクフォレンジック">
-<meta property="og:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
-<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
+<meta property="og:title" content="KibanaでWindowsイベントログを可視化してみる">
+<meta name="twitter:title" content="KibanaでWindowsイベントログを可視化してみる">
+<meta property="og:url" content="https://tatsui-techblog.com/2019/05/winlogbeat/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/winlogbeat/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
+<meta property="og:description" content="本記事では下記のテーマについて解説したいと思います。
 
 
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
+elasticsearchとkibanaの構築
+winlogbeatのインストール
+kibanaダッシュボードの作成
 
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
 
 ">
-<meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
+<meta name="twitter:description" content="本記事では下記のテーマについて解説したいと思います。
 
 
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
+elasticsearchとkibanaの構築
+winlogbeatのインストール
+kibanaダッシュボードの作成
 
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
 
 ">
 <meta property="og:locale" content="ja">
 
   
-    <meta property="article:published_time" content="2019-05-17T22:06:29">
+    <meta property="article:published_time" content="2019-05-04T12:16:08">
   
   
-    <meta property="article:modified_time" content="2019-05-17T22:06:29">
+    <meta property="article:modified_time" content="2019-05-04T12:16:08">
   
-  
-  
-    
-      <meta property="article:section" content="security">
-    
-      <meta property="article:section" content="forensic">
-    
   
   
     
-      <meta property="article:tag" content="security">
+      <meta property="article:section" content="elasticsearch">
     
-      <meta property="article:tag" content="forensic">
+      <meta property="article:section" content="windows">
+    
+  
+  
+    
+      <meta property="article:tag" content="elasticsearch">
+    
+      <meta property="article:tag" content="windows">
     
   
 
@@ -101,8 +85,8 @@
 
 
 
-  <meta property="og:image" content="https://tatsui-techblog.com/img/security2.jpg">
-  <meta property="twitter:image" content="https://tatsui-techblog.com/img/security2.jpg">
+  <meta property="og:image" content="https://tatsui-techblog.com/img/analysis1.jpg">
+  <meta property="twitter:image" content="https://tatsui-techblog.com/img/analysis1.jpg">
 
 
 
@@ -112,14 +96,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
 
 
-    <title>自宅ではじめるディスクフォレンジック</title>
+    <title>KibanaでWindowsイベントログを可視化してみる</title>
 
     <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/diskforensic/">
+    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/winlogbeat/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -281,15 +265,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      自宅ではじめるディスクフォレンジック
+      KibanaでWindowsイベントログを可視化してみる
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-05-17T22:06:29&#43;09:00">
+      <time itemprop="datePublished" datetime="2019-05-04T12:16:08&#43;09:00">
         
-  5 17, 2019
+  5 4, 2019
 
       </time>
     
@@ -298,9 +282,9 @@ ga('send', 'pageview');
   
     <span>カテゴリー</span>
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/security">security</a>, 
+      <a class="category-link" href="https://tatsui-techblog.com/categories/elasticsearch">elasticsearch</a>, 
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/forensic">forensic</a>
+      <a class="category-link" href="https://tatsui-techblog.com/categories/windows">windows</a>
     
   
 
@@ -310,94 +294,126 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-<code>ディスクフォレンジック</code>と呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+              <p>本記事では下記のテーマについて解説したいと思います。</p>
 
-<ol>
-<li>調査対象の選定</li>
-<li>調査媒体の保全</li>
-<li>フォレンジック調査</li>
-</ol>
-
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+<ul>
+<li>elasticsearchとkibanaの構築</li>
+<li>winlogbeatのインストール</li>
+<li>kibanaダッシュボードの作成</li>
+</ul>
 
 <p></p>
 
-<h2 id="準備するもの">準備するもの</h2>
+<p>はじめにElasticSearchとKibanaを用意します。
+docker-compose.ymlという名前のファイルを下記の内容で作成します。</p>
 
-<ul>
-<li>調査対象のマシン</li>
-<li>CD-R (VMイメージがある場合は必要なし)</li>
-</ul>
+<pre><code>version: '3.4'
 
-<h2 id="ディスクイメージの作成">ディスクイメージの作成</h2>
+volumes:
+  es-data:      # elasticsearch data
 
-<p>OSFCloneのISOイメージをダウンロードします。</p>
+services:
 
-<p><a href="https://www.osforensics.com/tools/create-disk-images.html">https://www.osforensics.com/tools/create-disk-images.html</a></p>
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.0.0
+    ports: [ '5601:5601']
+    depends_on: [ 'elasticsearch' ]
+    environment:
+      ELASTICSEARCH_HOST: http://elasticsearch:9200
 
-<p>ダウンロードが完了したらISOをCD-Rへ書き込みます。</p>
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.0
+    volumes: [ 'es-data:/usr/share/elasticsearch/data' ]
+    ports: [ '9200:9200']
+    environment:
+      discovery.type: 'single-node'
+      bootstrap.memory_lock: 'true'
+      ES_JAVA_OPTS: '-Xms1G -Xmx1G'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
 
-<h2 id="調査媒体の保全">調査媒体の保全</h2>
+</code></pre>
 
-<p>マルウェアに感染したマシンへCD-Rを挿入し起動します。
-私の環境では前回の記事で作成したVMイメージにISOファイルをDVDドライブにマウントさせ起動しました。</p>
+<h2 id="elasticsearch-kibanaの起動">ElasticSearch &amp; Kibanaの起動</h2>
 
-<p>osfcloneが起動すると次のような画面が表示されます。
-<img src="https://i.imgur.com/ROmD7Fs.png" alt="" /></p>
+<p>dockerを起動します。</p>
 
-<p>ディスクイメージを保存したいので<code>2</code>と入力して<code>Enter</code>を押します。
-<img src="https://i.imgur.com/qfGYKsk.png" alt="" /></p>
+<pre><code class="language-bash">$ docker-compose up -d
+</code></pre>
 
-<p>出力形式は下記の3つから選択できます。</p>
+<p>{&ldquo;message&rdquo;: &ldquo;started&rdquo;}というメッセージが表示されるまで待ちます。</p>
 
-<ul>
-<li>Raw (dd)</li>
-<li>EWF : Expert Witness Format</li>
-<li>AFF : Advanced Forensic Format</li>
-</ul>
+<pre><code class="language-bash">$ docker-compose logs -f elasticsearch
+...
+elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2019-05-12T15:14:17,587+0000&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;elasticsearch&quot;, &quot;cluster.uuid&quot;: &quot;9AIA4GPNTXegM81GvGx9yw&quot;, &quot;node.id&quot;: &quot;Sze63DhdRDus_m4dsjLFGQ&quot;,  &quot;message&quot;: &quot;started&quot;  }
+</code></pre>
 
-<p>今回は圧縮率が高く取得時間が早いEWFを選択します。
-<img src="https://i.imgur.com/f8vAgpY.png" alt="" /></p>
+<p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
 
-<p>続いてイメージ化するディスクを選択します。
-<img src="https://i.imgur.com/czAkecw.png" alt="" /></p>
+<h2 id="sysmonのインストール">Sysmonのインストール</h2>
 
-<p>適切なデバイスを選択してください。
-<img src="https://i.imgur.com/Y6cMUfC.png" alt="" /></p>
+<p>下記のサイトからSysmonをダウンロードします。
+<a href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon">https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon</a>
+コマンドプロンプトを管理者権限で実行し下記のコマンドを実行します</p>
 
-<p>次にイメージファイルを保存するパーティションを選択します。
-<img src="https://i.imgur.com/bjcpCqE.png" alt="" /></p>
+<pre><code class="language-shell">sysmon -accepteula –i –h md5,sha256 –n
+</code></pre>
 
-<p>保存先のパーティションはEXT4でフォーマットしてあります。
-<img src="https://i.imgur.com/ia2kKyu.png" alt="" /></p>
+<h2 id="winlogbeatのインストール">Winlogbeatのインストール</h2>
 
-<p>次にイメージの名前を変更します。
-<code>3</code>を入力したあとに<code>Enter</code>を押します。
-<img src="https://i.imgur.com/USfU3Qr.png" alt="" /></p>
+<p>winlogbeatをダウンロードします
+<a href="https://www.elastic.co/jp/downloads/beats/winlogbeat">https://www.elastic.co/jp/downloads/beats/winlogbeat</a></p>
 
-<p>例えば<code>windows</code>という名前をつけて保存してみます。
-<img src="https://i.imgur.com/9Jq6xmX.png" alt="" /></p>
+<p>ダウンロードしたzipファイルを<code>C:\winlogbeat</code>へ展開します</p>
 
-<p>Parametersを確認してSource,Destination,Image filenameが間違っていないか確認します。
-<img src="https://i.imgur.com/ATxqpiM.png" alt="" /></p>
+<p><img src="https://i.imgur.com/PFJbMWJ.png" alt="" /></p>
 
-<p>問題がなければ<code>9</code>を入力し<code>Enter</code>を押してください。
-<img src="https://i.imgur.com/olexmiC.png" alt="" /></p>
+<p>展開したファイルの中にある<code>winlogbeat.yml</code>の中身を以下のように書き換えます。</p>
 
-<p>色々と質問されますがEnterを押し続けて問題ないです。
-質問に回答したらイメージの取得が開始します。
-<img src="https://i.imgur.com/oNhU3GY.png" alt="" /></p>
+<pre><code>output.elasticsearch:
+  hosts: [&quot;192.168.11.30:9200&quot;]
 
-<p>進捗率が100%になったらEnterを押してメインメニューへ戻り
-shutdownします。
-<img src="https://i.imgur.com/OnkoFW2.png" alt="" /></p>
+setup.kibana:
+  host: &quot;192.168.11.30:5601&quot;
+</code></pre>
 
-<h2 id="最後に">最後に</h2>
+<p>次に管理者権限でコマンドプロンプトを立ち上げ下記のコマンドを実行します。</p>
 
-<p>今回はCD-Rから起動することでオペレーティングシステム環境にログを残すことなくディスクの内容を別の媒体へコピーしました。
-次回は保全したディスクイメージを解析するフォレンジック調査を実践してみたいと思います。</p>
+<pre><code>cd C:\winlogbeat
+PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-winlogbeat.ps1
+</code></pre>
+
+<p>サービス一覧に登録されているか確認する
+スタートメニューからローカルサービスの表示をクリックします。
+<img src="https://i.imgur.com/wL3rgZZ.png" alt="" />
+<code>winlogbeat</code>というサービス名を探すと、開始していないので
+右クリックメニューから開始をクリックします。
+<img src="https://i.imgur.com/PcKzOdn.png" alt="" /></p>
+
+<h2 id="kibana-ダッシュボードの準備">Kibana ダッシュボードの準備</h2>
+
+<p>Windows のPowershellを起動し下記のコマンドを実行します。</p>
+
+<pre><code>cd C:\winlogbeat
+.\winlogbeat.exe setup --dashboards
+</code></pre>
+
+<p>実行結果が</p>
+
+<pre><code>Loading dashboards (Kibana must be running and reachable)
+Loaded dashboards
+
+</code></pre>
+
+<p>と表示されればOKです。</p>
+
+<p>ブラウザからkibanaへアクセスし、左側サイドバーの<code>Dashboard</code>をクリックします。
+<img src="https://i.imgur.com/N1k9lLE.png" alt="" /></p>
+
+<p><code>Winlogbeat Dashboard ECS</code>をクリックすると、イベントログのダッシュボードが表示されます。
+<img src="https://i.imgur.com/3D4SX1h.png" alt="" /></p>
               
             </div>
           </div>
@@ -409,9 +425,9 @@ shutdownします。
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">タグ</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/security/">security</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/elasticsearch/">elasticsearch</a>
 
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/forensic/">forensic</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/windows/">windows</a>
 
                   </div>
                 
@@ -424,7 +440,7 @@ shutdownします。
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -432,7 +448,7 @@ shutdownします。
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -450,13 +466,13 @@ shutdownします。
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/winlogbeat/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/winlogbeat/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -504,7 +520,7 @@ shutdownします。
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -512,7 +528,7 @@ shutdownします。
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -530,13 +546,13 @@ shutdownします。
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/winlogbeat/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/winlogbeat/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -566,13 +582,13 @@ shutdownします。
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwinlogbeat%2F">
           <i class="fa fa-twitter"></i><span>Twitterで共有</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fwinlogbeat%2F">
           <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
         </a>
       </li>
@@ -802,9 +818,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/diskforensic\/';
+          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/winlogbeat\/';
           
-            this.page.identifier = '\/2019\/05\/diskforensic\/'
+            this.page.identifier = '\/2019\/05\/winlogbeat\/'
           
         };
         (function() {
