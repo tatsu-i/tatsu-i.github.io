@@ -28,17 +28,58 @@
   </url>
   
   <url>
+    <loc>https://tatsui-techblog.com/2019/05/blog-post/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/about/privacy-policy/</loc>
+    <lastmod>2019-05-01T17:01:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/about/</loc>
+    <lastmod>2019-05-01T17:01:34+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/about/</loc>
+    <lastmod>2019-05-01T17:01:34+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tatsui-techblog.com/archives/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://tatsui-techblog.com/tags/blog/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/blog/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tatsui-techblog.com/categories/</loc>
+    <lastmod>2019-05-01T17:01:34+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tatsui-techblog.com/categories/cloud/</loc>
+    <lastmod>2019-05-19T10:32:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/tags/docker/</loc>
     <lastmod>2019-05-19T10:32:44+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -50,14 +91,14 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/docker/</loc>
-    <lastmod>2019-05-19T10:32:44+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/tags/docker-compose/</loc>
+    <lastmod>2019-05-12T15:42:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/docker-compose/</loc>
-    <lastmod>2019-05-12T15:42:36+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/tags/edr/</loc>
+    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -68,7 +109,7 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/edr/</loc>
+    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
     <lastmod>2019-05-18T13:23:09+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -80,8 +121,8 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/elasticsearch/</loc>
-    <lastmod>2019-05-18T13:23:09+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/tags/forensic/</loc>
+    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -92,8 +133,14 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/forensic/</loc>
-    <lastmod>2019-05-17T22:06:29+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/tags/hugo/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/hugo/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -104,13 +151,13 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/pentest/</loc>
+    <loc>https://tatsui-techblog.com/tags/pentest/</loc>
     <lastmod>2019-05-19T10:32:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/pentest/</loc>
+    <loc>https://tatsui-techblog.com/categories/pentest/</loc>
     <lastmod>2019-05-19T10:32:44+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -122,31 +169,31 @@
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/security/</loc>
-    <lastmod>2019-05-19T10:32:44+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://tatsui-techblog.com/tags/security/</loc>
     <lastmod>2019-05-19T10:32:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/tags/</loc>
+    <loc>https://tatsui-techblog.com/categories/security/</loc>
     <lastmod>2019-05-19T10:32:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tatsui-techblog.com/categories/windows/</loc>
-    <lastmod>2019-05-04T12:16:08+09:00</lastmod>
+    <loc>https://tatsui-techblog.com/tags/</loc>
+    <lastmod>2019-05-01T17:34:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tatsui-techblog.com/tags/windows/</loc>
+    <lastmod>2019-05-04T12:16:08+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tatsui-techblog.com/categories/windows/</loc>
     <lastmod>2019-05-04T12:16:08+09:00</lastmod>
     <priority>0</priority>
   </url>

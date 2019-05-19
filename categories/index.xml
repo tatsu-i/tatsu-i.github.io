@@ -6,9 +6,28 @@
     <description>Recent content in Categories on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
+    <lastBuildDate>Wed, 01 May 2019 17:01:34 +0900</lastBuildDate>
     
 	<atom:link href="https://tatsui-techblog.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>https://tatsui-techblog.com/categories/about/</link>
+      <pubDate>Wed, 01 May 2019 17:01:34 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>https://tatsui-techblog.com/categories/blog/</link>
+      <pubDate>Wed, 01 May 2019 17:34:44 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/blog/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Cloud</title>
@@ -52,6 +71,15 @@
       <pubDate>Fri, 17 May 2019 22:06:29 +0900</pubDate>
       
       <guid>https://tatsui-techblog.com/categories/forensic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://tatsui-techblog.com/categories/hugo/</link>
+      <pubDate>Wed, 01 May 2019 17:34:44 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/hugo/</guid>
       <description></description>
     </item>
     

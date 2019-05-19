@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="author" content="tatsui">
+<meta name="keywords" content="">
+<meta name="description" content="免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
+記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。 その他、予告なしに記事の内容を変更・削除することもあります。
+また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。
+著作権・ライセンス 当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。 ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。
+また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。 ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。
+アクセス解析について 当サイトはGoogleアナリティクスによるアクセス解析を行っております。 このデータは匿名で収集されており個人を特定できるものではありません。 この情報はCookieを無効にすることで収集を拒否することが可能です。 収集を望まない場合はお使いのブラウザ設定でCookieを無効にしてください。">
+
+
+<meta property="og:description" content="免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
+記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。 その他、予告なしに記事の内容を変更・削除することもあります。
+また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。
+著作権・ライセンス 当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。 ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。
+また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。 ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。
+アクセス解析について 当サイトはGoogleアナリティクスによるアクセス解析を行っております。 このデータは匿名で収集されており個人を特定できるものではありません。 この情報はCookieを無効にすることで収集を拒否することが可能です。 収集を望まない場合はお使いのブラウザ設定でCookieを無効にしてください。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="プライバシーポリシー">
+<meta name="twitter:title" content="プライバシーポリシー">
+<meta property="og:url" content="https://tatsui-techblog.com/about/privacy-policy/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/about/privacy-policy/">
+<meta property="og:site_name" content="なないろテクノロジー">
+<meta property="og:description" content="免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
+記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。 その他、予告なしに記事の内容を変更・削除することもあります。
+また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。
+著作権・ライセンス 当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。 ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。
+また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。 ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。
+アクセス解析について 当サイトはGoogleアナリティクスによるアクセス解析を行っております。 このデータは匿名で収集されており個人を特定できるものではありません。 この情報はCookieを無効にすることで収集を拒否することが可能です。 収集を望まない場合はお使いのブラウザ設定でCookieを無効にしてください。">
+<meta name="twitter:description" content="免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
+記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。 その他、予告なしに記事の内容を変更・削除することもあります。
+また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。
+著作権・ライセンス 当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。 ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。
+また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。 ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。
+アクセス解析について 当サイトはGoogleアナリティクスによるアクセス解析を行っております。 このデータは匿名で収集されており個人を特定できるものではありません。 この情報はCookieを無効にすることで収集を拒否することが可能です。 収集を望まない場合はお使いのブラウザ設定でCookieを無効にしてください。">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2019-05-01T17:01:34">
+  
+  
+    <meta property="article:modified_time" content="2019-05-01T17:01:34">
+  
+  
+  
+    
+      <meta property="article:section" content="about">
+    
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+
+
+    <title>プライバシーポリシー</title>
+
+    <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tatsui-techblog.com/about/privacy-policy/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://tatsui-techblog.com/css/style-nnm2spxvve8onlujjlegkkytaehyadd4ksxc1hyzzq9a2wvtrgbljqyulomn.min.css" />
+    
+    
+
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-139884711-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="2">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tatsui-techblog.com/">なないろテクノロジー</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tatsui-techblog.com/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=90" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="2">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tatsui-techblog.com/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">tatsui</h4>
+        
+          <h5 class="sidebar-profile-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/about/privacy-policy">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-exclamation-triangle"></i>
+      
+      <span class="sidebar-button-desc">プライバシーポリシー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/tatsu-i" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsui-techblog.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="2"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      プライバシーポリシー
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-01T17:01:34&#43;09:00">
+        
+  5 1, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsui-techblog.com/categories/about">about</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h1 id="免責事項">免責事項</h1>
+
+<p>内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。
+当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。</p>
+
+<p>記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。
+その他、予告なしに記事の内容を変更・削除することもあります。</p>
+
+<p>また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。</p>
+
+<h1 id="著作権-ライセンス">著作権・ライセンス</h1>
+
+<p>当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。
+ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。</p>
+
+<p>また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。
+ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。</p>
+
+<h1 id="アクセス解析について">アクセス解析について</h1>
+
+<p>当サイトはGoogleアナリティクスによるアクセス解析を行っております。
+このデータは匿名で収集されており個人を特定できるものではありません。
+この情報はCookieを無効にすることで収集を拒否することが可能です。
+収集を望まない場合はお使いのブラウザ設定でCookieを無効にしてください。</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">次</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">前</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/about/privacy-policy/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/about/privacy-policy/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 tatsui. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="2">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">次</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">前</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/about/privacy-policy/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/about/privacy-policy/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="2">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2Fabout%2Fprivacy-policy%2F">
+          <i class="fa fa-twitter"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2Fabout%2Fprivacy-policy%2F">
+          <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">tatsui</h4>
+    
+      <div id="about-card-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        インテリジェンスアナリスト
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="検索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/infectionmonkey/">
+                <h3 class="media-heading">クラウド環境で使えるペネトレーションテストツール</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/wazuh/">
+                <h3 class="media-heading">オープンソースで構築するEDR</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/diskforensic/">
+                <h3 class="media-heading">自宅ではじめるディスクフォレンジック</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+<code>ディスクフォレンジック</code>と呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
+<ol>
+<li>調査対象の選定</li>
+<li>調査媒体の保全</li>
+<li>フォレンジック調査</li>
+</ol>
+
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/es7/">
+                <h3 class="media-heading">Dockerを使ってElasticsearch7.0のクラスタを作ってみる</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/winlogbeat/">
+                <h3 class="media-heading">KibanaでWindowsイベントログを可視化してみる</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
+
+<ul>
+<li>elasticsearchとkibanaの構築</li>
+<li>winlogbeatのインストール</li>
+<li>kibanaダッシュボードの作成</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/blog-post/">
+                <h3 class="media-heading">ブログ環境について</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
+テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+
+<p>他にもブログを公開するために下記のサービスを利用しています。</p>
+
+<ul>
+<li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
+<li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
+<li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
+<li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
+<li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         6 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://tatsui-techblog.com/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://tatsui-techblog.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tatsui-techblog.com\/about\/privacy-policy\/';
+          
+            this.page.identifier = '\/about\/privacy-policy\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nanairotekunorozi';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
