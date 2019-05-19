@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Cloud</title>
+      <link>https://tatsui-techblog.com/categories/cloud/</link>
+      <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://tatsui-techblog.com/categories/docker/</link>
       <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
@@ -47,9 +56,18 @@
     </item>
     
     <item>
+      <title>Pentest</title>
+      <link>https://tatsui-techblog.com/categories/pentest/</link>
+      <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
+      
+      <guid>https://tatsui-techblog.com/categories/pentest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Security</title>
       <link>https://tatsui-techblog.com/categories/security/</link>
-      <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
+      <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
       
       <guid>https://tatsui-techblog.com/categories/security/</guid>
       <description></description>
