@@ -8,19 +8,97 @@
 <meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
-<meta name="description" content="hierarchicalCategories">
+<meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
 
 
-<meta property="og:description" content="hierarchicalCategories">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Elasticsearch">
-<meta name="twitter:title" content="Elasticsearch">
-<meta property="og:url" content="https://tatsui-techblog.com/categories/elasticsearch/">
-<meta property="twitter:url" content="https://tatsui-techblog.com/categories/elasticsearch/">
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
+
+
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自宅ではじめるディスクフォレンジック②">
+<meta name="twitter:title" content="自宅ではじめるディスクフォレンジック②">
+<meta property="og:url" content="https://tatsui-techblog.com/2019/05/diskforensic2/">
+<meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/diskforensic2/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="hierarchicalCategories">
-<meta name="twitter:description" content="hierarchicalCategories">
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
+<meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
 <meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2019-05-22T22:18:10">
+  
+  
+    <meta property="article:modified_time" content="2019-05-22T22:18:10">
+  
+  
+  
+    
+      <meta property="article:section" content="security">
+    
+      <meta property="article:section" content="forensic">
+    
+      <meta property="article:section" content="elasticsearch">
+    
+      <meta property="article:section" content="docker">
+    
+  
+  
+    
+      <meta property="article:tag" content="security">
+    
+      <meta property="article:tag" content="forensic">
+    
+      <meta property="article:tag" content="elasticsearch">
+    
+      <meta property="article:tag" content="docker">
+    
+  
 
 
 <meta name="twitter:card" content="summary">
@@ -31,6 +109,9 @@
 
 
 
+  <meta property="og:image" content="https://tatsui-techblog.com/img/cyber2.jpg">
+  <meta property="twitter:image" content="https://tatsui-techblog.com/img/cyber2.jpg">
+
 
 
 
@@ -39,16 +120,14 @@
   <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
 
 
-    <title>Elasticsearch</title>
+    <title>自宅ではじめるディスクフォレンジック②</title>
 
     <link rel="icon" href="https://tatsui-techblog.com/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://tatsui-techblog.com/categories/elasticsearch/index.xml">
-    
 
     
 
-    <link rel="canonical" href="https://tatsui-techblog.com/categories/elasticsearch/">
+    <link rel="canonical" href="https://tatsui-techblog.com/2019/05/diskforensic2/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -80,7 +159,7 @@ ga('send', 'pageview');
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="2">
+      <header id="header" data-behavior="5">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://tatsui-techblog.com/">なないろテクノロジー</a>
@@ -100,7 +179,7 @@ ga('send', 'pageview');
   
 </header>
 
-      <nav id="sidebar" data-behavior="2">
+      <nav id="sidebar" data-behavior="5">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -209,35 +288,21 @@ ga('send', 'pageview');
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="2"
+      <div id="main" data-behavior="5"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      自宅ではじめるディスクフォレンジック②
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/diskforensic2/">
-          自宅ではじめるディスクフォレンジック②
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
       <time itemprop="datePublished" datetime="2019-05-22T22:18:10&#43;09:00">
@@ -263,10 +328,11 @@ ga('send', 'pageview');
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
 
@@ -279,157 +345,242 @@ ga('send', 'pageview');
 <p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
 
 <p></p>
-      
-      <p>
-        <a href="https://tatsui-techblog.com/2019/05/diskforensic2/" class="postShorten-excerpt_link link">続きを読む</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://tatsui-techblog.com/2019/05/diskforensic2/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://tatsui-techblog.com/img/cyber2.jpg"/>
-      </div>
-    </a>
-  
-</article>
 
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/es7/">
-          Dockerを使ってElasticsearch7.0のクラスタを作ってみる
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-05-12T15:42:36&#43;09:00">
-        
-  5 12, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://tatsui-techblog.com/categories/elasticsearch">elasticsearch</a>, 
-    
-      <a class="category-link" href="https://tatsui-techblog.com/categories/docker">docker</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        <p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
-
-<p></p>
-      
-      <p>
-        <a href="https://tatsui-techblog.com/2019/05/es7/" class="postShorten-excerpt_link link">続きを読む</a>
-        
-      </p>
-    </div>
-  </div>
-  
-    <a href="https://tatsui-techblog.com/2019/05/es7/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://tatsui-techblog.com/img/docker.jpg"/>
-      </div>
-    </a>
-  
-</article>
-
-            
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://tatsui-techblog.com/2019/05/winlogbeat/">
-          KibanaでWindowsイベントログを可視化してみる
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2019-05-04T12:16:08&#43;09:00">
-        
-  5 4, 2019
-
-      </time>
-    
-    
-  
-  
-    <span>カテゴリー</span>
-    
-      <a class="category-link" href="https://tatsui-techblog.com/categories/elasticsearch">elasticsearch</a>, 
-    
-      <a class="category-link" href="https://tatsui-techblog.com/categories/windows">windows</a>
-    
-  
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      
-        <p>本記事では下記のテーマについて解説したいと思います。</p>
+<h2 id="準備するもの">準備するもの</h2>
 
 <ul>
-<li>elasticsearchとkibanaの構築</li>
-<li>winlogbeatのインストール</li>
-<li>kibanaダッシュボードの作成</li>
+<li>Windowsのディスクイメージ
+
+<ul>
+<li>感染したマシンは前回の記事で作成したものを利用</li>
+<li>ディスクイメージはOSFCloneで作成しました(作り方は<a href="https://tatsui-techblog.com/2019/05/diskforensic/">こちら</a>)</li>
+</ul></li>
+<li>DockerがインストールされたLinuxマシン
+
+<ul>
+<li>Ubuntu 18.04に構築</li>
+<li>docker version 18.09.6</li>
+<li>docker-compose version 1.17.1</li>
+</ul></li>
 </ul>
 
-<p></p>
+<h2 id="dockerイメージのビルド">Dockerイメージのビルド</h2>
+
+<pre><code class="language-bash">$ git clone https://github.com/tatsu-i/docker-forensic
+$ cd docker-forensic
+$ docker-compose build
+</code></pre>
+
+<h2 id="スレッド数の上限を設定">スレッド数の上限を設定</h2>
+
+<pre><code class="language-bash">$ echo 'vm.max_map_count = 262144' | sudo tee -a /etc/sysctl.conf
+$ sudo sysctl -p
+</code></pre>
+
+<h2 id="elasticsearchとkibanaのコンテナを起動">ElasticSearchとKibanaのコンテナを起動</h2>
+
+<pre><code class="language-bash">$ docker-compose up -d kibana
+</code></pre>
+
+<h2 id="ディスクイメージファイルの準備">ディスクイメージファイルの準備</h2>
+
+<p>OSFCloneで作成したイメージを格納しているディスク(/dev/sdc1)をマウントします。</p>
+
+<pre><code class="language-bash">$ mkdir -p evidence
+$ sudo mount /dev/sdc1 ./evidence
+</code></pre>
+
+<h2 id="plasoを使ってイメージを変換">Plasoを使ってイメージを変換</h2>
+
+<pre><code class="language-bash">$ docker-compose up -d plaso
+$ docker-compose logs -f plaso
+plaso - psort version 20190331
+
+Storage file		: /data/output.plaso
+Processing time		: 00:16:51
+
+Events:         Total
+                1699331
+
+Identifier              PID     Status          Memory          Events          Tags            Reports
+Main                    72      exporting       1.4 GiB         1699331 (0)     0 (0)           0 (0)
+
+Processing completed.
+
+******************************** Export results ********************************
+        Events processed : 1699331
+     Events MACB grouped : 1694908
+Duplicate events removed : 249
+         Events filtered : 0
+  Events from time slice : 0
+--------------------------------------------------------------------------------
+dockerforensic_plaso_1 exited with code 0
+
+</code></pre>
+
+<p>私の環境では100Gのディスクを解析するのに1時間程度かかりました。
+以下マシンスペックです。</p>
+
+<pre><code>cpu : Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz 4 Core
+memory : 32G
+disk: 1TB SSD
+
+</code></pre>
+
+<p>処理が遅いと感じる場合は<code>WORKER_NUM</code>を増やしてみてください。
+例えば16個のWorkerを使う場合、Workerあたりのメモリ上限は2Gであるため最大で32Gのメモリが必要になります。</p>
+
+<pre><code class="language-diff">diff --git a/docker-compose.yml b/docker-compose.yml
+index 63f5727..c8de702 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -10,7 +10,7 @@ services:
+     volumes:
+       - ./evidence:/data
+     environment:
+-      WORKER_NUM: 2
++      WORKER_NUM: 16
+ 
+   logstash:
+     build: logstash
+</code></pre>
+
+<h2 id="kibanaを使って分析">Kibanaを使って分析</h2>
+
+<p>ログを可視化するためにダッシュボードをKibanaにインポートします。
+私の環境ではコンテナを起動したホストのIPアドレスが<code>192.168.11.30</code>なので
+下記のようなコマンドでインポートしました。</p>
+
+<pre><code>$ curl -XPOST http://192.168.11.30:5601/api/kibana/dashboards/import \ 
+   -H 'kbn-xsrf:true' -H 'Content-type:application/json' \
+   -d @dashboard-plaso.json
+</code></pre>
+
+<p>ダッシュボードのインポートが完了したら、ブラウザから<code>http://192.168.11.30:5601</code>へ接続します。
+画面左側のサイドバーの<code>Dashboard</code>をクリックしたあと<code>plaso</code>をクリックすると下記のようなダッシュボードが表示されます。
+<img src="https://i.imgur.com/hpuq4WA.png" alt="" /></p>
+
+<p>ダッシュボードの中にはテーブルがたくさんあるのですが、タイトル<code>Path</code>のテーブルに注目です。
+1ずつ確認してみると<code>monkey.exe</code>が見つかりました。</p>
+
+<p><img src="https://i.imgur.com/RxmPXXN.png" alt="" /></p>
+
+<p>ダッシュボード画面上部の検索窓に<code>monkey.exe</code>と入力しフィルターを行うと、下記のような結果が出力されました。
+<img src="https://i.imgur.com/rj1QsGf.png" alt="" /></p>
+
+<p>sha256 hashというタイトルのテーブルに表示されてるハッシュ値をGoogleで検索すると、
+Infection MonkeyのAgentであることがわかります。
+ハッシュ値: <code>77ac4264715a6e7d238f8b67ed04ee75cf75c07d360a4b649ca6e31c83ce7b21</code></p>
+
+<p><img src="https://i.imgur.com/qxH064V.png" alt="" /></p>
+
+<h2 id="最後に">最後に</h2>
+
+<p>今回は模擬マルウェアに感染させたディスクイメージのフォレンジック調査を行いました。
+答えがわかっているということもあり、侵害の起点を簡単に探すことができました。</p>
+
+<p>本当に感染してしまったマシンのディスクを解析する場合は、ここまで簡単に侵害の起点を見つける事は難しいでしょう。
+そのような場合は下記のようなサービスを使って悪意のあるファイルのハッシュ値がないか確認してみましょう。<br><br></p>
+
+<ul>
+<li><a href="https://www.virustotal.com/">https://www.virustotal.com/</a></li>
+<li><a href="https://www.hybrid-analysis.com/">https://www.hybrid-analysis.com/</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/security/">security</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/forensic/">forensic</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/elasticsearch/">elasticsearch</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsui-techblog.com/tags/docker/">docker</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">次</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/infectionmonkey/" data-tooltip="クラウド環境で使えるペネトレーションテストツール">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">前</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-      <p>
-        <a href="https://tatsui-techblog.com/2019/05/winlogbeat/" class="postShorten-excerpt_link link">続きを読む</a>
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
-  </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic2/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic2/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   
-    <a href="https://tatsui-techblog.com/2019/05/winlogbeat/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="https://tatsui-techblog.com/img/analysis1.jpg"/>
-      </div>
-    </a>
-  
-</article>
+</div>
 
             
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
             
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2019 tatsui. All Rights Reserved
@@ -437,6 +588,90 @@ ga('send', 'pageview');
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">次</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsui-techblog.com/2019/05/infectionmonkey/" data-tooltip="クラウド環境で使えるペネトレーションテストツール">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">前</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsui-techblog.com/2019/05/diskforensic2/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsui-techblog.com/2019/05/diskforensic2/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic2%2F">
+          <i class="fa fa-twitter"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsui-techblog.com%2F2019%2F05%2Fdiskforensic2%2F">
+          <i class="fa fa-facebook-official"></i><span>Facebookで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -713,6 +948,32 @@ $(document).ready(function() {
 });
 </script>
 
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tatsui-techblog.com\/2019\/05\/diskforensic2\/';
+          
+            this.page.identifier = '\/2019\/05\/diskforensic2\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'nanairotekunorozi';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
