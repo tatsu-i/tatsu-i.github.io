@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/tatsu-i.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "tatsui",
+    
+    "image": "https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308"
+    
+  },
+  "name":"Hugo tranquilpeak theme",
+  "description":"\u003cp\u003e本サイトはMarkdownで記事を書いた後に\u003ca href=\u0022https:\/\/gohugo.io\/\u0022\u003eHugo\u003c\/a\u003eでHTMLを生成し、Github Pagesデプロイしています。\nテーマは\u003ca href=\u0022https:\/\/github.com\/kakawait\/hugo-tranquilpeak-theme\u0022\u003eTranquilpeak\u003c\/a\u003eを使用しています。\u003c\/p\u003e\n\u003cp\u003e他にもブログを公開するために下記のサービスを利用しています。\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\u0022https:\/\/github.com\/tatsu-i\/tatsu-i.github.io\u0022\u003ehttps:\/\/github.com\/tatsu-i\/tatsu-i.github.io\u003c\/a\u003e (Github Pages)\u003c\/li\u003e\n\u003cli\u003e\u003ca href=\u0022https:\/\/github.com\/tatsu-i\/blog\u0022\u003ehttps:\/\/github.com\/tatsu-i\/blog\u003c\/a\u003e (privateリポジトリ)\u003c\/li\u003e\n\u003cli\u003e\u003ca href=\u0022https:\/\/circleci.com\/\u0022\u003ehttps:\/\/circleci.com\/\u003c\/a\u003e (CI\/CD)\u003c\/li\u003e\n\u003cli\u003e\u003ca href=\u0022https:\/\/www.onamae.com\u0022\u003ehttps:\/\/www.onamae.com\u003c\/a\u003e (CNAMEでgithub pagesのドメインを変更)\u003c\/li\u003e\n\u003cli\u003e\u003ca href=\u0022https:\/\/hackmd.io\u0022\u003ehttps:\/\/hackmd.io\u003c\/a\u003e (記事の下書き用)\u003c\/li\u003e\n\u003c\/ul\u003e",
+  "url":"https:\/\/tatsu-i.github.io\/post\/blog-post\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="tatsui">
+<meta name="keywords" content="">
+<meta name="description" content="本サイトはMarkdownで記事を書いた後にHugoでHTMLを生成し、Github Pagesデプロイしています。
+テーマはTranquilpeakを使用しています。
+他にもブログを公開するために下記のサービスを利用しています。
+
+https://github.com/tatsu-i/tatsu-i.github.io (Github Pages)
+https://github.com/tatsu-i/blog (privateリポジトリ)
+https://circleci.com/ (CI/CD)
+https://www.onamae.com (CNAMEでgithub pagesのドメインを変更)
+https://hackmd.io (記事の下書き用)
+">
+
+
+<meta property="og:description" content="本サイトはMarkdownで記事を書いた後にHugoでHTMLを生成し、Github Pagesデプロイしています。
+テーマはTranquilpeakを使用しています。
+他にもブログを公開するために下記のサービスを利用しています。
+
+https://github.com/tatsu-i/tatsu-i.github.io (Github Pages)
+https://github.com/tatsu-i/blog (privateリポジトリ)
+https://circleci.com/ (CI/CD)
+https://www.onamae.com (CNAMEでgithub pagesのドメインを変更)
+https://hackmd.io (記事の下書き用)
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ブログ環境について">
+<meta name="twitter:title" content="ブログ環境について">
+<meta property="og:url" content="https://tatsu-i.github.io/post/blog-post/">
+<meta property="twitter:url" content="https://tatsu-i.github.io/post/blog-post/">
+<meta property="og:site_name" content="Hugo tranquilpeak theme">
+<meta property="og:description" content="本サイトはMarkdownで記事を書いた後にHugoでHTMLを生成し、Github Pagesデプロイしています。
+テーマはTranquilpeakを使用しています。
+他にもブログを公開するために下記のサービスを利用しています。
+
+https://github.com/tatsu-i/tatsu-i.github.io (Github Pages)
+https://github.com/tatsu-i/blog (privateリポジトリ)
+https://circleci.com/ (CI/CD)
+https://www.onamae.com (CNAMEでgithub pagesのドメインを変更)
+https://hackmd.io (記事の下書き用)
+">
+<meta name="twitter:description" content="本サイトはMarkdownで記事を書いた後にHugoでHTMLを生成し、Github Pagesデプロイしています。
+テーマはTranquilpeakを使用しています。
+他にもブログを公開するために下記のサービスを利用しています。
+
+https://github.com/tatsu-i/tatsu-i.github.io (Github Pages)
+https://github.com/tatsu-i/blog (privateリポジトリ)
+https://circleci.com/ (CI/CD)
+https://www.onamae.com (CNAMEでgithub pagesのドメインを変更)
+https://hackmd.io (記事の下書き用)
+">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2019-05-01T17:34:44">
+  
+  
+    <meta property="article:modified_time" content="2019-05-01T17:34:44">
+  
+  
+  
+    
+      <meta property="article:section" content="hugo">
+    
+      <meta property="article:section" content="blog">
+    
+  
+  
+    
+      <meta property="article:tag" content="hugo">
+    
+      <meta property="article:tag" content="blog">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://tatsu-i.github.io/img/cyber-s.jpg">
+  <meta property="twitter:image" content="https://tatsu-i.github.io/img/cyber-s.jpg">
+
+
+    <title>ブログ環境について</title>
+
+    <link rel="icon" href="https://tatsu-i.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tatsu-i.github.io/post/blog-post/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://tatsu-i.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tatsu-i.github.io/" aria-label="Go to homepage">Hugo tranquilpeak theme</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tatsu-i.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tatsu-i.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">tatsui</h4>
+        
+          <h5 class="sidebar-profile-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/about/privacy-policy" title="プライバシーポリシー">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-exclamation-triangle"></i>
+      
+      <span class="sidebar-button-desc">プライバシーポリシー</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/tatsu-i" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      ブログ環境について
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2019-05-01T17:34:44&#43;09:00">
+        
+  May 1, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/hugo">hugo</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
+テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+<p>他にもブログを公開するために下記のサービスを利用しています。</p>
+<ul>
+<li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
+<li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
+<li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
+<li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
+<li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
+</ul>
+<h2 id="記事の公開手順">記事の公開手順</h2>
+<ul>
+<li>はじめに記事の下書きはhackmd.ioに書いておきます</li>
+<li>記事が出来上がったら、blogリポジトリにmarkdownを追加します</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/tatsu-i/blog
+$ hugo new post/new.md
+$ vim post/new.md <span style="color:#f92672">(</span>hackmd.io<span style="color:#f92672">)</span>の下書きをコピペ
+$ git add post/new.md
+$ git commit -m <span style="color:#e6db74">&#34;new post&#34;</span>
+$ git push origin master
+</code></pre></div><ul>
+<li>MasterブランチへpushされるとCirclCIが起動し、Github Pageリポジトリが更新されます</li>
+</ul>
+<p><img src="https://i.imgur.com/2meGAOy.png" alt=""></p>
+<p>以下CirclCIの設定ファイルです。</p>
+<p><code>config.yml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">branches</span>:
+      <span style="color:#f92672">only</span>:
+        - <span style="color:#ae81ff">master</span>
+    <span style="color:#f92672">docker</span>:
+      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">cibuilds/hugo:0.55.6</span>
+
+    <span style="color:#f92672">working_directory</span>: <span style="color:#ae81ff">/hugo</span>
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">run</span>:
+          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update enviroment</span>
+          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">apk update &amp;&amp; apk add git</span>
+      - <span style="color:#ae81ff">checkout</span>
+      - <span style="color:#f92672">run</span>:
+          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Building blog pages</span>
+          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">hugo -v</span>
+      - <span style="color:#f92672">add_ssh_keys</span>:
+          <span style="color:#f92672">fingerprints</span>:
+            - <span style="color:#e6db74">&#34;git ssh deploy key fingerprint&#34;</span>
+      - <span style="color:#f92672">deploy</span>:
+          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
+          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">./.circleci/deploy.sh</span>
+
+</code></pre></div><p><code>deploy.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash -e
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># gitの設定</span>
+git config --global push.default simple
+git config --global user.email <span style="color:#66d9ef">$(</span>git --no-pager show -s --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;%ae&#39;</span> HEAD<span style="color:#66d9ef">)</span>
+git config --global user.name $CIRCLE_USERNAME
+
+<span style="color:#75715e"># Github Pages 用リポジトリのクローン</span>
+git clone git@github.com:tatsu-i/tatsu-i.github.io.git deploy
+
+<span style="color:#75715e"># rsyncでhugoで生成したHTMLをコピー</span>
+rsync -arv --delete public/* ./deploy/
+cp ./CNAME ./deploy/
+cd ./deploy
+
+git add -f .
+git commit -m <span style="color:#e6db74">&#34;Deploy #</span>$CIRCLE_BUILD_NUM<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> true
+git push -f
+</code></pre></div>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/hugo/">hugo</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/blog/">blog</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/winlogbeat/" data-tooltip="KibanaでWindowsイベントログを可視化してみる" aria-label="NEXT: KibanaでWindowsイベントログを可視化してみる">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/blog-post/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/blog-post/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/blog-post/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/tatsu-i.github.io\/post\/blog-post\/';
+        
+          this.page.identifier = '\/post\/blog-post\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 tatsui. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/winlogbeat/" data-tooltip="KibanaでWindowsイベントログを可視化してみる" aria-label="NEXT: KibanaでWindowsイベントログを可視化してみる">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/blog-post/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/blog-post/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/blog-post/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fblog-post%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fblog-post%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fblog-post%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">tatsui</h4>
+    
+      <div id="about-card-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        インテリジェンスアナリスト
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tatsu-i.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://tatsu-i.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

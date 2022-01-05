@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/tatsu-i.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "tatsui",
+    
+    "image": "https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308"
+    
+  },
+  "name":"Hugo tranquilpeak theme",
+  "description":"\u003cp\u003eコンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを\n\u003ccode\u003eディスクフォレンジック\u003c\/code\u003eと呼びます。\nディスクフォレンジックは大まかに下記のような手順で行われます\u003c\/p\u003e\n\u003col\u003e\n\u003cli\u003e調査対象の選定\u003c\/li\u003e\n\u003cli\u003e調査媒体の保全\u003c\/li\u003e\n\u003cli\u003eフォレンジック調査\u003c\/li\u003e\n\u003c\/ol\u003e\n\u003cp\u003e今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。\u003c\/p\u003e",
+  "url":"https:\/\/tatsu-i.github.io\/post\/diskforensic\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="tatsui">
+<meta name="keywords" content="">
+<meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。">
+
+
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自宅ではじめるディスクフォレンジック①">
+<meta name="twitter:title" content="自宅ではじめるディスクフォレンジック①">
+<meta property="og:url" content="https://tatsu-i.github.io/post/diskforensic/">
+<meta property="twitter:url" content="https://tatsu-i.github.io/post/diskforensic/">
+<meta property="og:site_name" content="Hugo tranquilpeak theme">
+<meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。">
+<meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+ディスクフォレンジックと呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます
+
+調査対象の選定
+調査媒体の保全
+フォレンジック調査
+
+今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2019-05-17T22:06:29">
+  
+  
+    <meta property="article:modified_time" content="2019-05-17T22:06:29">
+  
+  
+  
+    
+      <meta property="article:section" content="security">
+    
+      <meta property="article:section" content="forensic">
+    
+  
+  
+    
+      <meta property="article:tag" content="security">
+    
+      <meta property="article:tag" content="forensic">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://tatsu-i.github.io/img/security2.jpg">
+  <meta property="twitter:image" content="https://tatsu-i.github.io/img/security2.jpg">
+
+
+    <title>自宅ではじめるディスクフォレンジック①</title>
+
+    <link rel="icon" href="https://tatsu-i.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tatsu-i.github.io/post/diskforensic/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://tatsu-i.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tatsu-i.github.io/" aria-label="Go to homepage">Hugo tranquilpeak theme</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tatsu-i.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tatsu-i.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">tatsui</h4>
+        
+          <h5 class="sidebar-profile-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/about/privacy-policy" title="プライバシーポリシー">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-exclamation-triangle"></i>
+      
+      <span class="sidebar-button-desc">プライバシーポリシー</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/tatsu-i" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      自宅ではじめるディスクフォレンジック①
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2019-05-17T22:06:29&#43;09:00">
+        
+  May 17, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/security">security</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/forensic">forensic</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+<code>ディスクフォレンジック</code>と呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+<ol>
+<li>調査対象の選定</li>
+<li>調査媒体の保全</li>
+<li>フォレンジック調査</li>
+</ol>
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+<h2 id="準備するもの">準備するもの</h2>
+<ul>
+<li>調査対象のマシン</li>
+<li>CD-R (VMイメージがある場合は必要なし)</li>
+</ul>
+<h2 id="ディスクイメージの作成">ディスクイメージの作成</h2>
+<p>OSFCloneのISOイメージをダウンロードします。</p>
+<p><a href="https://www.osforensics.com/tools/create-disk-images.html">https://www.osforensics.com/tools/create-disk-images.html</a></p>
+<p>ダウンロードが完了したらISOをCD-Rへ書き込みます。</p>
+<h2 id="調査媒体の保全">調査媒体の保全</h2>
+<p>マルウェアに感染したマシンへCD-Rを挿入し起動します。
+私の環境では前回の記事で作成したVMイメージにISOファイルをDVDドライブにマウントさせ起動しました。</p>
+<p>osfcloneが起動すると次のような画面が表示されます。
+<img src="https://i.imgur.com/ROmD7Fs.png" alt=""></p>
+<p>ディスクイメージを保存したいので<code>2</code>と入力して<code>Enter</code>を押します。
+<img src="https://i.imgur.com/qfGYKsk.png" alt=""></p>
+<p>出力形式は下記の3つから選択できます。</p>
+<ul>
+<li>Raw (dd)</li>
+<li>EWF : Expert Witness Format</li>
+<li>AFF : Advanced Forensic Format</li>
+</ul>
+<p>今回は圧縮率が高く取得時間が早いEWFを選択します。
+<img src="https://i.imgur.com/f8vAgpY.png" alt=""></p>
+<p>続いてイメージ化するディスクを選択します。
+<img src="https://i.imgur.com/czAkecw.png" alt=""></p>
+<p>適切なデバイスを選択してください。
+<img src="https://i.imgur.com/Y6cMUfC.png" alt=""></p>
+<p>次にイメージファイルを保存するパーティションを選択します。
+<img src="https://i.imgur.com/bjcpCqE.png" alt=""></p>
+<p>保存先のパーティションはEXT4でフォーマットしてあります。
+<img src="https://i.imgur.com/ia2kKyu.png" alt=""></p>
+<p>次にイメージの名前を変更します。
+<code>3</code>を入力したあとに<code>Enter</code>を押します。
+<img src="https://i.imgur.com/USfU3Qr.png" alt=""></p>
+<p>例えば<code>windows</code>という名前をつけて保存してみます。
+<img src="https://i.imgur.com/9Jq6xmX.png" alt=""></p>
+<p>Parametersを確認してSource,Destination,Image filenameが間違っていないか確認します。
+<img src="https://i.imgur.com/ATxqpiM.png" alt=""></p>
+<p>問題がなければ<code>9</code>を入力し<code>Enter</code>を押してください。
+<img src="https://i.imgur.com/olexmiC.png" alt=""></p>
+<p>色々と質問されますがEnterを押し続けて問題ないです。
+質問に回答したらイメージの取得が開始します。
+<img src="https://i.imgur.com/oNhU3GY.png" alt=""></p>
+<p>進捗率が100%になったらEnterを押してメインメニューへ戻り
+shutdownします。
+<img src="https://i.imgur.com/OnkoFW2.png" alt=""></p>
+<h2 id="最後に">最後に</h2>
+<p>今回はCD-Rから起動することでオペレーティングシステム環境にログを残すことなくディスクの内容を別の媒体へコピーしました。
+次回は保全したディスクイメージを解析するフォレンジック調査を実践してみたいと思います。</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/security/">security</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/forensic/">forensic</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/wazuh/" data-tooltip="オープンソースで構築するEDR" aria-label="NEXT: オープンソースで構築するEDR">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる" aria-label="PREVIOUS: Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/diskforensic/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/diskforensic/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/diskforensic/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/tatsu-i.github.io\/post\/diskforensic\/';
+        
+          this.page.identifier = '\/post\/diskforensic\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 tatsui. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/wazuh/" data-tooltip="オープンソースで構築するEDR" aria-label="NEXT: オープンソースで構築するEDR">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/es7/" data-tooltip="Dockerを使ってElasticsearch7.0のクラスタを作ってみる" aria-label="PREVIOUS: Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/diskforensic/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/diskforensic/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/diskforensic/" title="Share on Linkedin" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fdiskforensic%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fdiskforensic%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Fdiskforensic%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">tatsui</h4>
+    
+      <div id="about-card-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        インテリジェンスアナリスト
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tatsu-i.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://tatsu-i.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

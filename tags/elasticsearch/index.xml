@@ -1,73 +1,59 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Elasticsearch on なないろテクノロジー</title>
+    <title>elasticsearch on Hugo tranquilpeak theme</title>
     <link>https://tatsu-i.github.io/tags/elasticsearch/</link>
-    <description>Recent content in Elasticsearch on なないろテクノロジー</description>
+    <description>Recent content in elasticsearch on Hugo tranquilpeak theme</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate>
-    
-	<atom:link href="https://tatsu-i.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate><atom:link href="https://tatsu-i.github.io/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自宅ではじめるディスクフォレンジック②</title>
-      <link>https://tatsu-i.github.io/2019/05/diskforensic2/</link>
+      <link>https://tatsu-i.github.io/post/diskforensic2/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsu-i.github.io/2019/05/diskforensic2/</guid>
+      <guid>https://tatsu-i.github.io/post/diskforensic2/</guid>
       <description>&lt;p&gt;コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 &lt;code&gt;ディスクフォレンジック&lt;/code&gt;と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;調査対象の選定&lt;/li&gt;
 &lt;li&gt;調査媒体の保全&lt;/li&gt;
 &lt;li&gt;フォレンジック調査&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;今回は&lt;a href=&#34;https://tatsu-i.github.io/2019/05/infectionmonkey/&#34;&gt;前回の記事&lt;/a&gt;で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;今回は&lt;a href=&#34;https://tatsu-i.github.io/2019/05/infectionmonkey/&#34;&gt;前回の記事&lt;/a&gt;で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>オープンソースで構築するEDR</title>
-      <link>https://tatsu-i.github.io/2019/05/wazuh/</link>
+      <link>https://tatsu-i.github.io/post/wazuh/</link>
       <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
       
-      <guid>https://tatsu-i.github.io/2019/05/wazuh/</guid>
-      <description>&lt;p&gt;Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
-&lt;/p&gt;</description>
+      <guid>https://tatsu-i.github.io/post/wazuh/</guid>
+      <description>&lt;p&gt;Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Dockerを使ってElasticsearch7.0のクラスタを作ってみる</title>
-      <link>https://tatsu-i.github.io/2019/05/es7/</link>
+      <link>https://tatsu-i.github.io/post/es7/</link>
       <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
       
-      <guid>https://tatsu-i.github.io/2019/05/es7/</guid>
-      <description>&lt;p&gt;Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://tatsu-i.github.io/post/es7/</guid>
+      <description>&lt;p&gt;Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>KibanaでWindowsイベントログを可視化してみる</title>
-      <link>https://tatsu-i.github.io/2019/05/winlogbeat/</link>
+      <link>https://tatsu-i.github.io/post/winlogbeat/</link>
       <pubDate>Sat, 04 May 2019 12:16:08 +0900</pubDate>
       
-      <guid>https://tatsu-i.github.io/2019/05/winlogbeat/</guid>
+      <guid>https://tatsu-i.github.io/post/winlogbeat/</guid>
       <description>&lt;p&gt;本記事では下記のテーマについて解説したいと思います。&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;elasticsearchとkibanaの構築&lt;/li&gt;
 &lt;li&gt;winlogbeatのインストール&lt;/li&gt;
 &lt;li&gt;kibanaダッシュボードの作成&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;/ul&gt;</description>
     </item>
     
   </channel>
