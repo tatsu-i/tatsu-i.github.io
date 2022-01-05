@@ -2,107 +2,107 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on なないろテクノロジー</title>
-    <link>https://tatsui-techblog.com/categories/</link>
+    <link>https://tatsu-i.github.io/categories/</link>
     <description>Recent content in Categories on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate><atom:link href="https://tatsui-techblog.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate><atom:link href="https://tatsu-i.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker</title>
-      <link>https://tatsui-techblog.com/categories/docker/</link>
+      <link>https://tatsu-i.github.io/categories/docker/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/docker/</guid>
+      <guid>https://tatsu-i.github.io/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elasticsearch</title>
-      <link>https://tatsui-techblog.com/categories/elasticsearch/</link>
+      <link>https://tatsu-i.github.io/categories/elasticsearch/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/elasticsearch/</guid>
+      <guid>https://tatsu-i.github.io/categories/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>forensic</title>
-      <link>https://tatsui-techblog.com/categories/forensic/</link>
+      <link>https://tatsu-i.github.io/categories/forensic/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/forensic/</guid>
+      <guid>https://tatsu-i.github.io/categories/forensic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>security</title>
-      <link>https://tatsui-techblog.com/categories/security/</link>
+      <link>https://tatsu-i.github.io/categories/security/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/security/</guid>
+      <guid>https://tatsu-i.github.io/categories/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cloud</title>
-      <link>https://tatsui-techblog.com/categories/cloud/</link>
+      <link>https://tatsu-i.github.io/categories/cloud/</link>
       <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/cloud/</guid>
+      <guid>https://tatsu-i.github.io/categories/cloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pentest</title>
-      <link>https://tatsui-techblog.com/categories/pentest/</link>
+      <link>https://tatsu-i.github.io/categories/pentest/</link>
       <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/pentest/</guid>
+      <guid>https://tatsu-i.github.io/categories/pentest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>edr</title>
-      <link>https://tatsui-techblog.com/categories/edr/</link>
+      <link>https://tatsu-i.github.io/categories/edr/</link>
       <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/edr/</guid>
+      <guid>https://tatsu-i.github.io/categories/edr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>windows</title>
-      <link>https://tatsui-techblog.com/categories/windows/</link>
+      <link>https://tatsu-i.github.io/categories/windows/</link>
       <pubDate>Sat, 04 May 2019 12:16:08 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/windows/</guid>
+      <guid>https://tatsu-i.github.io/categories/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>https://tatsui-techblog.com/categories/blog/</link>
+      <link>https://tatsu-i.github.io/categories/blog/</link>
       <pubDate>Wed, 01 May 2019 17:34:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/blog/</guid>
+      <guid>https://tatsu-i.github.io/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://tatsui-techblog.com/categories/hugo/</link>
+      <link>https://tatsu-i.github.io/categories/hugo/</link>
       <pubDate>Wed, 01 May 2019 17:34:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/hugo/</guid>
+      <guid>https://tatsu-i.github.io/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>about</title>
-      <link>https://tatsui-techblog.com/categories/about/</link>
+      <link>https://tatsu-i.github.io/categories/about/</link>
       <pubDate>Wed, 01 May 2019 17:01:34 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/categories/about/</guid>
+      <guid>https://tatsu-i.github.io/categories/about/</guid>
       <description></description>
     </item>
     

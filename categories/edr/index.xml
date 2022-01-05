@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>edr on なないろテクノロジー</title>
-    <link>https://tatsui-techblog.com/categories/edr/</link>
+    <link>https://tatsu-i.github.io/categories/edr/</link>
     <description>Recent content in edr on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 18 May 2019 13:23:09 +0900</lastBuildDate><atom:link href="https://tatsui-techblog.com/categories/edr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 May 2019 13:23:09 +0900</lastBuildDate><atom:link href="https://tatsu-i.github.io/categories/edr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>オープンソースで構築するEDR</title>
-      <link>https://tatsui-techblog.com/2019/05/wazuh/</link>
+      <link>https://tatsu-i.github.io/2019/05/wazuh/</link>
       <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/wazuh/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/wazuh/</guid>
       <description>&lt;p&gt;Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。&lt;/p&gt;</description>
     </item>
     

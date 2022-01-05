@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>なないろテクノロジー</title>
-    <link>https://tatsui-techblog.com/</link>
+    <link>https://tatsu-i.github.io/</link>
     <description>Recent content on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate><atom:link href="https://tatsui-techblog.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 May 2019 22:18:10 +0900</lastBuildDate><atom:link href="https://tatsu-i.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自宅ではじめるディスクフォレンジック②</title>
-      <link>https://tatsui-techblog.com/2019/05/diskforensic2/</link>
+      <link>https://tatsu-i.github.io/2019/05/diskforensic2/</link>
       <pubDate>Wed, 22 May 2019 22:18:10 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/diskforensic2/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/diskforensic2/</guid>
       <description>&lt;p&gt;コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 &lt;code&gt;ディスクフォレンジック&lt;/code&gt;と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます&lt;/p&gt;
@@ -21,34 +21,34 @@
 &lt;li&gt;調査媒体の保全&lt;/li&gt;
 &lt;li&gt;フォレンジック調査&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;今回は&lt;a href=&#34;https://tatsui-techblog.com/2019/05/infectionmonkey/&#34;&gt;前回の記事&lt;/a&gt;で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。&lt;/p&gt;</description>
+&lt;p&gt;今回は&lt;a href=&#34;https://tatsu-i.github.io/2019/05/infectionmonkey/&#34;&gt;前回の記事&lt;/a&gt;で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>クラウド環境で使えるペネトレーションテストツール</title>
-      <link>https://tatsui-techblog.com/2019/05/infectionmonkey/</link>
+      <link>https://tatsu-i.github.io/2019/05/infectionmonkey/</link>
       <pubDate>Sun, 19 May 2019 10:32:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/infectionmonkey/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/infectionmonkey/</guid>
       <description>&lt;p&gt;プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
 Infection Monkeyを動かしてみました。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>オープンソースで構築するEDR</title>
-      <link>https://tatsui-techblog.com/2019/05/wazuh/</link>
+      <link>https://tatsu-i.github.io/2019/05/wazuh/</link>
       <pubDate>Sat, 18 May 2019 13:23:09 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/wazuh/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/wazuh/</guid>
       <description>&lt;p&gt;Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>自宅ではじめるディスクフォレンジック①</title>
-      <link>https://tatsui-techblog.com/2019/05/diskforensic/</link>
+      <link>https://tatsu-i.github.io/2019/05/diskforensic/</link>
       <pubDate>Fri, 17 May 2019 22:06:29 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/diskforensic/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/diskforensic/</guid>
       <description>&lt;p&gt;コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 &lt;code&gt;ディスクフォレンジック&lt;/code&gt;と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます&lt;/p&gt;
@@ -62,19 +62,19 @@ Infection Monkeyを動かしてみました。&lt;/p&gt;</description>
     
     <item>
       <title>Dockerを使ってElasticsearch7.0のクラスタを作ってみる</title>
-      <link>https://tatsui-techblog.com/2019/05/es7/</link>
+      <link>https://tatsu-i.github.io/2019/05/es7/</link>
       <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/es7/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/es7/</guid>
       <description>&lt;p&gt;Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>KibanaでWindowsイベントログを可視化してみる</title>
-      <link>https://tatsui-techblog.com/2019/05/winlogbeat/</link>
+      <link>https://tatsu-i.github.io/2019/05/winlogbeat/</link>
       <pubDate>Sat, 04 May 2019 12:16:08 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/winlogbeat/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/winlogbeat/</guid>
       <description>&lt;p&gt;本記事では下記のテーマについて解説したいと思います。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;elasticsearchとkibanaの構築&lt;/li&gt;
@@ -85,10 +85,10 @@ Infection Monkeyを動かしてみました。&lt;/p&gt;</description>
     
     <item>
       <title>ブログ環境について</title>
-      <link>https://tatsui-techblog.com/2019/05/blog-post/</link>
+      <link>https://tatsu-i.github.io/2019/05/blog-post/</link>
       <pubDate>Wed, 01 May 2019 17:34:44 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/2019/05/blog-post/</guid>
+      <guid>https://tatsu-i.github.io/2019/05/blog-post/</guid>
       <description>&lt;p&gt;本サイトはMarkdownで記事を書いた後に&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;でHTMLを生成し、Github Pagesデプロイしています。
 テーマは&lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme&#34;&gt;Tranquilpeak&lt;/a&gt;を使用しています。&lt;/p&gt;
 &lt;p&gt;他にもブログを公開するために下記のサービスを利用しています。&lt;/p&gt;
@@ -103,10 +103,10 @@ Infection Monkeyを動かしてみました。&lt;/p&gt;</description>
     
     <item>
       <title>プライバシーポリシー</title>
-      <link>https://tatsui-techblog.com/about/privacy-policy/</link>
+      <link>https://tatsu-i.github.io/about/privacy-policy/</link>
       <pubDate>Wed, 01 May 2019 17:01:34 +0900</pubDate>
       
-      <guid>https://tatsui-techblog.com/about/privacy-policy/</guid>
+      <guid>https://tatsu-i.github.io/about/privacy-policy/</guid>
       <description>免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
 記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。 その他、予告なしに記事の内容を変更・削除することもあります。
 また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。
