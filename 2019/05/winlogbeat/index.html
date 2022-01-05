@@ -5,28 +5,22 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="本記事では下記のテーマについて解説したいと思います。
 
-
 elasticsearchとkibanaの構築
 winlogbeatのインストール
 kibanaダッシュボードの作成
-
-
 ">
 
 
 <meta property="og:description" content="本記事では下記のテーマについて解説したいと思います。
 
-
 elasticsearchとkibanaの構築
 winlogbeatのインストール
 kibanaダッシュボードの作成
-
-
 ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KibanaでWindowsイベントログを可視化してみる">
@@ -36,21 +30,15 @@ kibanaダッシュボードの作成
 <meta property="og:site_name" content="なないろテクノロジー">
 <meta property="og:description" content="本記事では下記のテーマについて解説したいと思います。
 
-
 elasticsearchとkibanaの構築
 winlogbeatのインストール
 kibanaダッシュボードの作成
-
-
 ">
 <meta name="twitter:description" content="本記事では下記のテーマについて解説したいと思います。
 
-
 elasticsearchとkibanaの構築
 winlogbeatのインストール
 kibanaダッシュボードの作成
-
-
 ">
 <meta property="og:locale" content="ja">
 
@@ -117,16 +105,18 @@ kibanaダッシュボードの作成
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-139884711-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
     
     
 
@@ -305,19 +295,14 @@ ga('send', 'pageview');
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>本記事では下記のテーマについて解説したいと思います。</p>
-
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
 </ul>
-
-<p></p>
-
 <p>はじめにElasticSearchとKibanaを用意します。
 docker-compose.ymlという名前のファイルを下記の内容で作成します。</p>
-
-<pre><code>version: '3.4'
+<pre tabindex="0"><code>version: '3.4'
 
 volumes:
   es-data:      # elasticsearch data
@@ -344,86 +329,52 @@ services:
         soft: -1
         hard: -1
 
-</code></pre>
-
-<h2 id="elasticsearch-kibanaの起動">ElasticSearch &amp; Kibanaの起動</h2>
-
+</code></pre><h2 id="elasticsearch--kibanaの起動">ElasticSearch &amp; Kibanaの起動</h2>
 <p>dockerを起動します。</p>
-
-<pre><code class="language-bash">$ docker-compose up -d
-</code></pre>
-
-<p>{&ldquo;message&rdquo;: &ldquo;started&rdquo;}というメッセージが表示されるまで待ちます。</p>
-
-<pre><code class="language-bash">$ docker-compose logs -f elasticsearch
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d
+</code></pre></div><p>{&ldquo;message&rdquo;: &ldquo;started&rdquo;}というメッセージが表示されるまで待ちます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose logs -f elasticsearch
 ...
-elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2019-05-12T15:14:17,587+0000&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;elasticsearch&quot;, &quot;cluster.uuid&quot;: &quot;9AIA4GPNTXegM81GvGx9yw&quot;, &quot;node.id&quot;: &quot;Sze63DhdRDus_m4dsjLFGQ&quot;,  &quot;message&quot;: &quot;started&quot;  }
-</code></pre>
-
-<p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
-
+elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;server&#34;</span>, <span style="color:#e6db74">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2019-05-12T15:14:17,587+0000&#34;</span>, <span style="color:#e6db74">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;component&#34;</span>: <span style="color:#e6db74">&#34;o.e.n.Node&#34;</span>, <span style="color:#e6db74">&#34;cluster.name&#34;</span>: <span style="color:#e6db74">&#34;docker-cluster&#34;</span>, <span style="color:#e6db74">&#34;node.name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>, <span style="color:#e6db74">&#34;cluster.uuid&#34;</span>: <span style="color:#e6db74">&#34;9AIA4GPNTXegM81GvGx9yw&#34;</span>, <span style="color:#e6db74">&#34;node.id&#34;</span>: <span style="color:#e6db74">&#34;Sze63DhdRDus_m4dsjLFGQ&#34;</span>,  <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;started&#34;</span>  <span style="color:#f92672">}</span>
+</code></pre></div><p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
 <h2 id="sysmonのインストール">Sysmonのインストール</h2>
-
 <p>下記のサイトからSysmonをダウンロードします。
 <a href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon">https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon</a>
 コマンドプロンプトを管理者権限で実行し下記のコマンドを実行します</p>
-
-<pre><code class="language-shell">sysmon -accepteula –i –h md5,sha256 –n
-</code></pre>
-
-<h2 id="winlogbeatのインストール">Winlogbeatのインストール</h2>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sysmon -accepteula –i –h md5,sha256 –n
+</code></pre></div><h2 id="winlogbeatのインストール">Winlogbeatのインストール</h2>
 <p>winlogbeatをダウンロードします
 <a href="https://www.elastic.co/jp/downloads/beats/winlogbeat">https://www.elastic.co/jp/downloads/beats/winlogbeat</a></p>
-
 <p>ダウンロードしたzipファイルを<code>C:\winlogbeat</code>へ展開します</p>
-
-<p><img src="https://i.imgur.com/PFJbMWJ.png" alt="" /></p>
-
+<p><img src="https://i.imgur.com/PFJbMWJ.png" alt=""></p>
 <p>展開したファイルの中にある<code>winlogbeat.yml</code>の中身を以下のように書き換えます。</p>
-
-<pre><code>output.elasticsearch:
+<pre tabindex="0"><code>output.elasticsearch:
   hosts: [&quot;192.168.11.30:9200&quot;]
 
 setup.kibana:
   host: &quot;192.168.11.30:5601&quot;
-</code></pre>
-
-<p>次に管理者権限でコマンドプロンプトを立ち上げ下記のコマンドを実行します。</p>
-
-<pre><code>cd C:\winlogbeat
+</code></pre><p>次に管理者権限でコマンドプロンプトを立ち上げ下記のコマンドを実行します。</p>
+<pre tabindex="0"><code>cd C:\winlogbeat
 PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-winlogbeat.ps1
-</code></pre>
-
-<p>サービス一覧に登録されているか確認する
+</code></pre><p>サービス一覧に登録されているか確認する
 スタートメニューからローカルサービスの表示をクリックします。
-<img src="https://i.imgur.com/wL3rgZZ.png" alt="" />
+<img src="https://i.imgur.com/wL3rgZZ.png" alt="">
 <code>winlogbeat</code>というサービス名を探すと、開始していないので
 右クリックメニューから開始をクリックします。
-<img src="https://i.imgur.com/PcKzOdn.png" alt="" /></p>
-
+<img src="https://i.imgur.com/PcKzOdn.png" alt=""></p>
 <h2 id="kibana-ダッシュボードの準備">Kibana ダッシュボードの準備</h2>
-
 <p>Windows のPowershellを起動し下記のコマンドを実行します。</p>
-
-<pre><code>cd C:\winlogbeat
+<pre tabindex="0"><code>cd C:\winlogbeat
 .\winlogbeat.exe setup --dashboards
-</code></pre>
-
-<p>実行結果が</p>
-
-<pre><code>Loading dashboards (Kibana must be running and reachable)
+</code></pre><p>実行結果が</p>
+<pre tabindex="0"><code>Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
 
-</code></pre>
-
-<p>と表示されればOKです。</p>
-
+</code></pre><p>と表示されればOKです。</p>
 <p>ブラウザからkibanaへアクセスし、左側サイドバーの<code>Dashboard</code>をクリックします。
-<img src="https://i.imgur.com/N1k9lLE.png" alt="" /></p>
-
+<img src="https://i.imgur.com/N1k9lLE.png" alt=""></p>
 <p><code>Winlogbeat Dashboard ECS</code>をクリックすると、イベントログのダッシュボードが表示されます。
-<img src="https://i.imgur.com/3D4SX1h.png" alt="" /></p>
+<img src="https://i.imgur.com/3D4SX1h.png" alt=""></p>
               
             </div>
           </div>
@@ -517,7 +468,7 @@ Loaded dashboards
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 tatsui. All Rights Reserved
+    &copy; 2022 tatsui. All Rights Reserved
   </span>
 </footer>
 
@@ -670,16 +621,12 @@ Loaded dashboards
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -697,8 +644,7 @@ Loaded dashboards
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-</p></div>
+Infection Monkeyを動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -715,8 +661,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
-</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -736,16 +681,12 @@ Infection Monkeyを動かしてみました。
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -762,9 +703,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
-
-<p></p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -782,14 +721,11 @@ Infection Monkeyを動かしてみました。
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
-
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -808,18 +744,14 @@ Infection Monkeyを動かしてみました。
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
-
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
-
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

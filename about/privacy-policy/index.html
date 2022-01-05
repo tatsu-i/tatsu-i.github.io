@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="免責事項 内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。
@@ -94,16 +94,18 @@
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-139884711-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
     
     
 
@@ -279,28 +281,18 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              
-
-<h1 id="免責事項">免責事項</h1>
-
+              <h1 id="免責事項">免責事項</h1>
 <p>内容は実際に検証を行いできる限り正確に書くように心がけていますが、必ずしもそれらの正確性・信頼性を保証するものではありません。
 当サイトに掲載している情報によって生じた損害等の一切の責任を負いかねます。</p>
-
 <p>記事は書いた時点のものなので、載せてる図が古い場合やリンク先が削除または移動していたりする場合がございます。
 その他、予告なしに記事の内容を変更・削除することもあります。</p>
-
 <p>また、サイトで記述している内容は私個人の見解であり、所属する企業や団体を代表するものではありません。</p>
-
-<h1 id="著作権-ライセンス">著作権・ライセンス</h1>
-
+<h1 id="著作権ライセンス">著作権・ライセンス</h1>
 <p>当サイトの著作権は特別な記載のない限り、私、tatsuiに帰属します。適切な範囲での引用を除く、いかなる使用・変更・共有・再頒布も許可しておりません。
 ただし、Twitterなどの他のWebサイトからのリソースを引用している場合、それらの権利は引用元の外部サイトに帰属します。</p>
-
 <p>また、例外として記事内で記載されたプログラムソースコードに関しては特に記載のないものは著作権を放棄したものとします。
 ただし、プログラムソースコード内でAPIなどで参照している資産（画像・データなど）があった場合、それらの資産の著作権を放棄しているわけではございません。</p>
-
 <h1 id="アクセス解析について">アクセス解析について</h1>
-
 <p>当サイトはGoogleアナリティクスによるアクセス解析を行っております。
 このデータは匿名で収集されており個人を特定できるものではありません。
 この情報はCookieを無効にすることで収集を拒否することが可能です。
@@ -387,7 +379,7 @@ ga('send', 'pageview');
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 tatsui. All Rights Reserved
+    &copy; 2022 tatsui. All Rights Reserved
   </span>
 </footer>
 
@@ -540,16 +532,12 @@ ga('send', 'pageview');
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は<a href="https://tatsui-techblog.com/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -567,8 +555,7 @@ ga('send', 'pageview');
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。
-</p></div>
+Infection Monkeyを動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -585,8 +572,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
-</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -606,16 +592,12 @@ Infection Monkeyを動かしてみました。
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
-
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
-
-<p></p></div>
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -632,9 +614,7 @@ Infection Monkeyを動かしてみました。
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
-
-<p></p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -652,14 +632,11 @@ Infection Monkeyを動かしてみました。
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
-
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -678,18 +655,14 @@ Infection Monkeyを動かしてみました。
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
-
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
-
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul>
-
-<p></p></div>
+</ul></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

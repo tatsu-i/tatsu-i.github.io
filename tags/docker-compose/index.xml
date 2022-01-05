@@ -1,25 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker Compose on なないろテクノロジー</title>
+    <title>docker-compose on なないろテクノロジー</title>
     <link>https://tatsui-techblog.com/tags/docker-compose/</link>
-    <description>Recent content in Docker Compose on なないろテクノロジー</description>
+    <description>Recent content in docker-compose on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 12 May 2019 15:42:36 +0900</lastBuildDate>
-    
-	<atom:link href="https://tatsui-techblog.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 12 May 2019 15:42:36 +0900</lastBuildDate><atom:link href="https://tatsui-techblog.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dockerを使ってElasticsearch7.0のクラスタを作ってみる</title>
       <link>https://tatsui-techblog.com/2019/05/es7/</link>
       <pubDate>Sun, 12 May 2019 15:42:36 +0900</pubDate>
       
       <guid>https://tatsui-techblog.com/2019/05/es7/</guid>
-      <description>&lt;p&gt;Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。&lt;/p&gt;</description>
     </item>
     
   </channel>
