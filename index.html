@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="hierarchicalCategories">
@@ -62,18 +62,16 @@
 
     
       
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-139884711-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-139884711-1', 'auto');
+ga('send', 'pageview');
 </script>
+
     
     
 
@@ -222,22 +220,18 @@ if (!doNotTrack) {
             
   
     
-      
-        
-      
-    
   
 
 
   
 
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
   <div class="postShorten-wrap">
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://tatsu-i.github.io/post/">
-          Posts
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/diskforensic2/">
+          自宅ではじめるディスクフォレンジック②
         </a>
       </h1>
       
@@ -250,19 +244,451 @@ if (!doNotTrack) {
       </time>
     
     
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/security">security</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/forensic">forensic</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/elasticsearch">elasticsearch</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/docker">docker</a>
+    
+  
+
   </div>
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
       
-        
+        <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+<code>ディスクフォレンジック</code>と呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
+<ol>
+<li>調査対象の選定</li>
+<li>調査媒体の保全</li>
+<li>フォレンジック調査</li>
+</ol>
+
+<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
+
+<p></p>
       
       <p>
-        <a href="https://tatsu-i.github.io/post/" class="postShorten-excerpt_link link">続きを読む</a>
+        <a href="https://tatsu-i.github.io/2019/05/diskforensic2/" class="postShorten-excerpt_link link">続きを読む</a>
         
       </p>
     </div>
   </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/diskforensic2/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/cyber2.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/infectionmonkey/">
+          クラウド環境で使えるペネトレーションテストツール
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-19T10:32:44&#43;09:00">
+        
+  5 19, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/security">security</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/pentest">pentest</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/cloud">cloud</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
+Infection Monkeyを動かしてみました。
+</p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/infectionmonkey/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/pentest.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/wazuh/">
+          オープンソースで構築するEDR
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-18T13:23:09&#43;09:00">
+        
+  5 18, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/security">security</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/edr">edr</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/wazuh/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/wazuh/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/security.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/diskforensic/">
+          自宅ではじめるディスクフォレンジック①
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-17T22:06:29&#43;09:00">
+        
+  5 17, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/security">security</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/forensic">forensic</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
+<code>ディスクフォレンジック</code>と呼びます。
+ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
+<ol>
+<li>調査対象の選定</li>
+<li>調査媒体の保全</li>
+<li>フォレンジック調査</li>
+</ol>
+
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/diskforensic/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/diskforensic/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/security2.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/es7/">
+          Dockerを使ってElasticsearch7.0のクラスタを作ってみる
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-12T15:42:36&#43;09:00">
+        
+  5 12, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/elasticsearch">elasticsearch</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/docker">docker</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/es7/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/es7/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/docker.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/winlogbeat/">
+          KibanaでWindowsイベントログを可視化してみる
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-04T12:16:08&#43;09:00">
+        
+  5 4, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/elasticsearch">elasticsearch</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/windows">windows</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>本記事では下記のテーマについて解説したいと思います。</p>
+
+<ul>
+<li>elasticsearchとkibanaの構築</li>
+<li>winlogbeatのインストール</li>
+<li>kibanaダッシュボードの作成</li>
+</ul>
+
+<p></p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/winlogbeat/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/winlogbeat/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/analysis1.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://tatsu-i.github.io/2019/05/blog-post/">
+          ブログ環境について
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-01T17:34:44&#43;09:00">
+        
+  5 1, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/hugo">hugo</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/blog">blog</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
+テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+
+<p>他にもブログを公開するために下記のサービスを利用しています。</p>
+
+<ul>
+<li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
+<li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
+<li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
+<li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
+<li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
+</ul>
+
+<p></p>
+      
+      <p>
+        <a href="https://tatsu-i.github.io/2019/05/blog-post/" class="postShorten-excerpt_link link">続きを読む</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://tatsu-i.github.io/2019/05/blog-post/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://tatsu-i.github.io/img/cyber-s.jpg"/>
+      </div>
+    </a>
   
 </article>
 
@@ -341,12 +767,16 @@ if (!doNotTrack) {
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
+
+<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -364,7 +794,8 @@ if (!doNotTrack) {
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。</p></div>
+Infection Monkeyを動かしてみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -381,7 +812,8 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -401,12 +833,16 @@ Infection Monkeyを動かしてみました。</p></div>
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
+
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -423,7 +859,9 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -441,11 +879,14 @@ Infection Monkeyを動かしてみました。</p></div>
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
+
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -464,14 +905,18 @@ Infection Monkeyを動かしてみました。</p></div>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
+
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

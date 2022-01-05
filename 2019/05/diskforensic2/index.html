@@ -5,29 +5,37 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 ディスクフォレンジックと呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます
 
+
 調査対象の選定
 調査媒体の保全
 フォレンジック調査
 
-今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。">
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
 
 
 <meta property="og:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 ディスクフォレンジックと呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます
 
+
 調査対象の選定
 調査媒体の保全
 フォレンジック調査
 
-今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。">
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自宅ではじめるディスクフォレンジック②">
 <meta name="twitter:title" content="自宅ではじめるディスクフォレンジック②">
@@ -38,20 +46,28 @@
 ディスクフォレンジックと呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます
 
+
 調査対象の選定
 調査媒体の保全
 フォレンジック調査
 
-今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。">
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
 <meta name="twitter:description" content="コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 ディスクフォレンジックと呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます
 
+
 調査対象の選定
 調査媒体の保全
 フォレンジック調査
 
-今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。">
+
+今回は前回の記事で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。
+
+">
 <meta property="og:locale" content="ja">
 
   
@@ -125,18 +141,16 @@
 
     
       
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-139884711-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-139884711-1', 'auto');
+ga('send', 'pageview');
 </script>
+
     
     
 
@@ -321,111 +335,153 @@ if (!doNotTrack) {
               <p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
+
 <p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
+
+<p></p>
+
 <h2 id="準備するもの">準備するもの</h2>
+
 <ul>
 <li>Windowsのディスクイメージ
+
 <ul>
 <li>感染したマシンは前回の記事で作成したものを利用</li>
 <li>ディスクイメージはOSFCloneで作成しました(作り方は<a href="https://tatsu-i.github.io/2019/05/diskforensic/">こちら</a>)</li>
-</ul>
-</li>
+</ul></li>
 <li>DockerがインストールされたLinuxマシン
+
 <ul>
 <li>Ubuntu 18.04に構築</li>
 <li>docker version 18.09.6</li>
 <li>docker-compose version 1.17.1</li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h2 id="dockerイメージのビルド">Dockerイメージのビルド</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/tatsu-i/docker-forensic
+
+<pre><code class="language-bash">$ git clone https://github.com/tatsu-i/docker-forensic
 $ cd docker-forensic
 $ docker-compose build
-</code></pre></div><h2 id="スレッド数の上限を設定">スレッド数の上限を設定</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ echo <span style="color:#e6db74">&#39;vm.max_map_count = 262144&#39;</span> | sudo tee -a /etc/sysctl.conf
+</code></pre>
+
+<h2 id="スレッド数の上限を設定">スレッド数の上限を設定</h2>
+
+<pre><code class="language-bash">$ echo 'vm.max_map_count = 262144' | sudo tee -a /etc/sysctl.conf
 $ sudo sysctl -p
-</code></pre></div><h2 id="elasticsearchとkibanaのコンテナを起動">ElasticSearchとKibanaのコンテナを起動</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d kibana
-</code></pre></div><h2 id="ディスクイメージファイルの準備">ディスクイメージファイルの準備</h2>
+</code></pre>
+
+<h2 id="elasticsearchとkibanaのコンテナを起動">ElasticSearchとKibanaのコンテナを起動</h2>
+
+<pre><code class="language-bash">$ docker-compose up -d kibana
+</code></pre>
+
+<h2 id="ディスクイメージファイルの準備">ディスクイメージファイルの準備</h2>
+
 <p>OSFCloneで作成したイメージを格納しているディスク(/dev/sdc1)をマウントします。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir -p evidence
+
+<pre><code class="language-bash">$ mkdir -p evidence
 $ sudo mount /dev/sdc1 ./evidence
-</code></pre></div><h2 id="plasoを使ってイメージを変換">Plasoを使ってイメージを変換</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d plaso
+</code></pre>
+
+<h2 id="plasoを使ってイメージを変換">Plasoを使ってイメージを変換</h2>
+
+<pre><code class="language-bash">$ docker-compose up -d plaso
 $ docker-compose logs -f plaso
-plaso - psort version <span style="color:#ae81ff">20190331</span>
+plaso - psort version 20190331
 
 Storage file		: /data/output.plaso
 Processing time		: 00:16:51
 
 Events:         Total
-                <span style="color:#ae81ff">1699331</span>
+                1699331
 
 Identifier              PID     Status          Memory          Events          Tags            Reports
-Main                    <span style="color:#ae81ff">72</span>      exporting       1.4 GiB         <span style="color:#ae81ff">1699331</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>     <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>           <span style="color:#ae81ff">0</span> <span style="color:#f92672">(</span>0<span style="color:#f92672">)</span>
+Main                    72      exporting       1.4 GiB         1699331 (0)     0 (0)           0 (0)
 
 Processing completed.
 
 ******************************** Export results ********************************
-        Events processed : <span style="color:#ae81ff">1699331</span>
-     Events MACB grouped : <span style="color:#ae81ff">1694908</span>
-Duplicate events removed : <span style="color:#ae81ff">249</span>
-         Events filtered : <span style="color:#ae81ff">0</span>
-  Events from time slice : <span style="color:#ae81ff">0</span>
+        Events processed : 1699331
+     Events MACB grouped : 1694908
+Duplicate events removed : 249
+         Events filtered : 0
+  Events from time slice : 0
 --------------------------------------------------------------------------------
-dockerforensic_plaso_1 exited with code <span style="color:#ae81ff">0</span>
+dockerforensic_plaso_1 exited with code 0
 
-</code></pre></div><p>私の環境では100Gのディスクを解析するのに1時間程度かかりました。
+</code></pre>
+
+<p>私の環境では100Gのディスクを解析するのに1時間程度かかりました。
 以下マシンスペックです。</p>
-<pre tabindex="0"><code>cpu : Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz 4 Core
+
+<pre><code>cpu : Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz 4 Core
 memory : 32G
 disk: 1TB SSD
 
-</code></pre><p>処理が遅いと感じる場合は<code>WORKER_NUM</code>を増やしてみてください。
+</code></pre>
+
+<p>処理が遅いと感じる場合は<code>WORKER_NUM</code>を増やしてみてください。
 例えば16個のWorkerを使う場合、Workerあたりのメモリ上限は2Gであるため最大で32Gのメモリが必要になります。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git a/docker-compose.yml b/docker-compose.yml
+
+<pre><code class="language-diff">diff --git a/docker-compose.yml b/docker-compose.yml
 index 63f5727..c8de702 100644
-<span style="color:#f92672">--- a/docker-compose.yml
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/docker-compose.yml
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -10,7 +10,7 @@ services:
-</span><span style="color:#75715e"></span>     volumes:
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -10,7 +10,7 @@ services:
+     volumes:
        - ./evidence:/data
      environment:
-<span style="color:#f92672">-      WORKER_NUM: 2
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+      WORKER_NUM: 16
-</span><span style="color:#a6e22e"></span> 
+-      WORKER_NUM: 2
++      WORKER_NUM: 16
+ 
    logstash:
      build: logstash
-</code></pre></div><h2 id="kibanaを使って分析">Kibanaを使って分析</h2>
+</code></pre>
+
+<h2 id="kibanaを使って分析">Kibanaを使って分析</h2>
+
 <p>ログを可視化するためにダッシュボードをKibanaにインポートします。
 私の環境ではコンテナを起動したホストのIPアドレスが<code>192.168.11.30</code>なので
 下記のようなコマンドでインポートしました。</p>
-<pre tabindex="0"><code>$ curl -XPOST http://192.168.11.30:5601/api/kibana/dashboards/import \ 
+
+<pre><code>$ curl -XPOST http://192.168.11.30:5601/api/kibana/dashboards/import \ 
    -H 'kbn-xsrf:true' -H 'Content-type:application/json' \
    -d @dashboard-plaso.json
-</code></pre><p>ダッシュボードのインポートが完了したら、ブラウザから<code>http://192.168.11.30:5601</code>へ接続します。
+</code></pre>
+
+<p>ダッシュボードのインポートが完了したら、ブラウザから<code>http://192.168.11.30:5601</code>へ接続します。
 画面左側のサイドバーの<code>Dashboard</code>をクリックしたあと<code>plaso</code>をクリックすると下記のようなダッシュボードが表示されます。
-<img src="https://i.imgur.com/hpuq4WA.png" alt=""></p>
+<img src="https://i.imgur.com/hpuq4WA.png" alt="" /></p>
+
 <p>ダッシュボードの中にはテーブルがたくさんあるのですが、タイトル<code>Path</code>のテーブルに注目です。
 1ずつ確認してみると<code>monkey.exe</code>が見つかりました。</p>
-<p><img src="https://i.imgur.com/RxmPXXN.png" alt=""></p>
+
+<p><img src="https://i.imgur.com/RxmPXXN.png" alt="" /></p>
+
 <p>ダッシュボード画面上部の検索窓に<code>monkey.exe</code>と入力しフィルターを行うと、下記のような結果が出力されました。
-<img src="https://i.imgur.com/rj1QsGf.png" alt=""></p>
+<img src="https://i.imgur.com/rj1QsGf.png" alt="" /></p>
+
 <p>sha256 hashというタイトルのテーブルに表示されてるハッシュ値をGoogleで検索すると、
 Infection MonkeyのAgentであることがわかります。
 ハッシュ値: <code>77ac4264715a6e7d238f8b67ed04ee75cf75c07d360a4b649ca6e31c83ce7b21</code></p>
-<p><img src="https://i.imgur.com/qxH064V.png" alt=""></p>
+
+<p><img src="https://i.imgur.com/qxH064V.png" alt="" /></p>
+
 <h2 id="最後に">最後に</h2>
+
 <p>今回は模擬マルウェアに感染させたディスクイメージのフォレンジック調査を行いました。
 答えがわかっているということもあり、侵害の起点を簡単に探すことができました。</p>
+
 <p>本当に感染してしまったマシンのディスクを解析する場合は、ここまで簡単に侵害の起点を見つける事は難しいでしょう。
-そのような場合は下記のようなサービスを使って悪意のあるファイルのハッシュ値がないか確認してみましょう。<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+そのような場合は下記のようなサービスを使って悪意のあるファイルのハッシュ値がないか確認してみましょう。<br><br></p>
+
 <ul>
 <li><a href="https://www.virustotal.com/">https://www.virustotal.com/</a></li>
 <li><a href="https://www.hybrid-analysis.com/">https://www.hybrid-analysis.com/</a></li>
@@ -680,12 +736,16 @@ Infection MonkeyのAgentであることがわかります。
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
+
+<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -703,7 +763,8 @@ Infection MonkeyのAgentであることがわかります。
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。</p></div>
+Infection Monkeyを動かしてみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -720,7 +781,8 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -740,12 +802,16 @@ Infection Monkeyを動かしてみました。</p></div>
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
+
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -762,7 +828,9 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -780,11 +848,14 @@ Infection Monkeyを動かしてみました。</p></div>
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
+
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -803,14 +874,18 @@ Infection Monkeyを動かしてみました。</p></div>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
+
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>

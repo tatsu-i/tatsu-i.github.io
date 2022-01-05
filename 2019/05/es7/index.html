@@ -5,21 +5,29 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.4.3-SNAPSHOT">
+<meta name="generator" content="Hugo 0.40.1 with theme Tranquilpeak 0.4.3-SNAPSHOT">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="docker, docker-compose, elasticsearch7, kibana7, elasticsearch, kibana">
-<meta name="description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。">
+<meta name="description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
+
+">
 
 
-<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。">
+<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
+
+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
 <meta name="twitter:title" content="Dockerを使ってElasticsearch7.0のクラスタを作ってみる">
 <meta property="og:url" content="https://tatsu-i.github.io/2019/05/es7/">
 <meta property="twitter:url" content="https://tatsu-i.github.io/2019/05/es7/">
 <meta property="og:site_name" content="なないろテクノロジー">
-<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。">
-<meta name="twitter:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。">
+<meta property="og:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
+
+">
+<meta name="twitter:description" content="Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。
+
+">
 <meta property="og:locale" content="ja">
 
   
@@ -89,18 +97,16 @@
 
     
       
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-139884711-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-139884711-1', 'auto');
+ga('send', 'pageview');
 </script>
+
     
     
 
@@ -279,105 +285,126 @@ if (!doNotTrack) {
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p>
+
 <h2 id="docker-composeファイルの作成">docker-composeファイルの作成</h2>
-<p>はじめに<code>docker-compose.yml</code>という名前のファイルを下記の内容で作成します。<!-- raw HTML omitted -->
-同じイメージを使って複数のノードを生成するため、Yamlが冗長化しないように<!-- raw HTML omitted -->
+
+<p>はじめに<code>docker-compose.yml</code>という名前のファイルを下記の内容で作成します。<br>
+同じイメージを使って複数のノードを生成するため、Yamlが冗長化しないように<br>
 アンカーとエイリアスを用いた記述を行っています。</p>
+
 <p>elastic stack(x-pack)を利用する場合は<code>-oss:7.0.0</code>を<code>:7.0.0</code>に置き換える必要があります。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.4&#39;</span>
 
-<span style="color:#f92672">x-es7-common</span>: <span style="color:#75715e">&amp;es7-common</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0</span>
-    <span style="color:#f92672">ulimits</span>:
-      <span style="color:#f92672">memlock</span>:
-        <span style="color:#f92672">soft</span>: -<span style="color:#ae81ff">1</span>
-        <span style="color:#f92672">hard</span>: -<span style="color:#ae81ff">1</span>
+<pre><code class="language-yaml">version: '3.4'
 
-<span style="color:#f92672">x-es7-option</span>: <span style="color:#75715e">&amp;es7-option</span>
-      <span style="color:#75715e"># クラスタ名</span>
-      <span style="color:#f92672">cluster.name</span>: <span style="color:#e6db74">&#39;docker-cluster&#39;</span>
-      <span style="color:#75715e"># ノードあたりの割当メモリ</span>
-      <span style="color:#f92672">ES_JAVA_OPTS</span>: <span style="color:#e6db74">&#39;-Xms512m -Xmx512m&#39;</span>
-      <span style="color:#75715e"># スワップ無効化</span>
-      <span style="color:#f92672">bootstrap.memory_lock</span>: <span style="color:#e6db74">&#39;true&#39;</span>
+x-es7-common: &amp;es7-common
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
 
-<span style="color:#75715e"># Dataノード</span>
-<span style="color:#f92672">x-es7-node</span>: <span style="color:#75715e">&amp;es7-node</span>
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-common</span>
-    <span style="color:#f92672">environment</span>:
-      <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-option</span>
-      <span style="color:#f92672">node.master</span>: <span style="color:#e6db74">&#34;false&#34;</span>
-      <span style="color:#f92672">node.data</span>: <span style="color:#e6db74">&#34;true&#34;</span>
-      <span style="color:#f92672">node.ingest</span>: <span style="color:#e6db74">&#34;false&#34;</span>
-      <span style="color:#f92672">discovery.seed_hosts</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>
+x-es7-option: &amp;es7-option
+      # クラスタ名
+      cluster.name: 'docker-cluster'
+      # ノードあたりの割当メモリ
+      ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+      # スワップ無効化
+      bootstrap.memory_lock: 'true'
 
-<span style="color:#75715e"># Masterノード</span>
-<span style="color:#f92672">x-es7-master</span>: <span style="color:#75715e">&amp;es7-master</span>
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-common</span>
-    <span style="color:#f92672">environment</span>:
-      <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-option</span>
-      <span style="color:#f92672">node.master</span>: <span style="color:#e6db74">&#34;true&#34;</span>
-      <span style="color:#f92672">node.data</span>: <span style="color:#e6db74">&#34;false&#34;</span>
-      <span style="color:#f92672">node.ingest</span>: <span style="color:#e6db74">&#34;false&#34;</span>
-      <span style="color:#f92672">cluster.initial_master_nodes</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>
-      <span style="color:#f92672">node.name</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>
-    <span style="color:#75715e"># ノード数に応じて変更する</span>
-    <span style="color:#f92672">depends_on</span>: 
-      - <span style="color:#e6db74">&#34;elasticsearch-data1&#34;</span>
-      - <span style="color:#e6db74">&#34;elasticsearch-data2&#34;</span>
-      - <span style="color:#e6db74">&#34;elasticsearch-data3&#34;</span>
+# Dataノード
+x-es7-node: &amp;es7-node
+    &lt;&lt;: *es7-common
+    environment:
+      &lt;&lt;: *es7-option
+      node.master: &quot;false&quot;
+      node.data: &quot;true&quot;
+      node.ingest: &quot;false&quot;
+      discovery.seed_hosts: &quot;elasticsearch&quot;
 
-<span style="color:#75715e"># ノード数に応じて変更する</span>
-<span style="color:#f92672">volumes</span>:
-  <span style="color:#f92672">es7-master1</span>:
-  <span style="color:#f92672">es7-data1</span>:
-  <span style="color:#f92672">es7-data2</span>:
-  <span style="color:#f92672">es7-data3</span>:
+# Masterノード
+x-es7-master: &amp;es7-master
+    &lt;&lt;: *es7-common
+    environment:
+      &lt;&lt;: *es7-option
+      node.master: &quot;true&quot;
+      node.data: &quot;false&quot;
+      node.ingest: &quot;false&quot;
+      cluster.initial_master_nodes: &quot;elasticsearch&quot;
+      node.name: &quot;elasticsearch&quot;
+    # ノード数に応じて変更する
+    depends_on: 
+      - &quot;elasticsearch-data1&quot;
+      - &quot;elasticsearch-data2&quot;
+      - &quot;elasticsearch-data3&quot;
 
-<span style="color:#f92672">services</span>:
+# ノード数に応じて変更する
+volumes:
+  es7-master1:
+  es7-data1:
+  es7-data2:
+  es7-data3:
 
-  <span style="color:#f92672">kibana</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/kibana/kibana-oss:7.0.0</span>
-    <span style="color:#f92672">ports</span>: [ <span style="color:#e6db74">&#39;5601:5601&#39;</span>]
-    <span style="color:#f92672">depends_on</span>: [ <span style="color:#e6db74">&#39;elasticsearch&#39;</span> ]
-    <span style="color:#f92672">environment</span>:
-      <span style="color:#f92672">ELASTICSEARCH_URL</span>: <span style="color:#ae81ff">http://elasticsearch:9200</span>
+services:
 
-  <span style="color:#f92672">elasticsearch</span>:
-    <span style="color:#f92672">ports</span>:
-      - <span style="color:#e6db74">&#34;9200:9200&#34;</span>
-    <span style="color:#f92672">volumes</span>: [ <span style="color:#e6db74">&#39;es7-master1:/usr/share/elasticsearch/data&#39;</span> ]
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-master</span>
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.0.0
+    ports: [ '5601:5601']
+    depends_on: [ 'elasticsearch' ]
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
 
-  <span style="color:#75715e"># ノード数に応じて変更する</span>
-  <span style="color:#f92672">elasticsearch-data1</span>:
-    <span style="color:#f92672">volumes</span>: [ <span style="color:#e6db74">&#39;es7-data1:/usr/share/elasticsearch/data&#39;</span> ]
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-node</span>
+  elasticsearch:
+    ports:
+      - &quot;9200:9200&quot;
+    volumes: [ 'es7-master1:/usr/share/elasticsearch/data' ]
+    &lt;&lt;: *es7-master
 
-  <span style="color:#f92672">elasticsearch-data2</span>:
-    <span style="color:#f92672">volumes</span>: [ <span style="color:#e6db74">&#39;es7-data2:/usr/share/elasticsearch/data&#39;</span> ]
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-node</span>
+  # ノード数に応じて変更する
+  elasticsearch-data1:
+    volumes: [ 'es7-data1:/usr/share/elasticsearch/data' ]
+    &lt;&lt;: *es7-node
 
-  <span style="color:#f92672">elasticsearch-data3</span>:
-    <span style="color:#f92672">volumes</span>: [ <span style="color:#e6db74">&#39;es7-data3:/usr/share/elasticsearch/data&#39;</span> ]
-    <span style="color:#f92672">&lt;&lt;</span>: <span style="color:#75715e">*es7-node</span>
+  elasticsearch-data2:
+    volumes: [ 'es7-data2:/usr/share/elasticsearch/data' ]
+    &lt;&lt;: *es7-node
 
-</code></pre></div><h2 id="動作確認">動作確認</h2>
+  elasticsearch-data3:
+    volumes: [ 'es7-data3:/usr/share/elasticsearch/data' ]
+    &lt;&lt;: *es7-node
+
+</code></pre>
+
+<h2 id="動作確認">動作確認</h2>
+
 <p>dockerを起動します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d
-</code></pre></div><p><code>{&quot;message&quot;: &quot;started&quot;}</code>というメッセージが表示されるまで待ちます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose logs -f elasticsearch
+
+<pre><code class="language-bash">$ docker-compose up -d
+</code></pre>
+
+<p><code>{&quot;message&quot;: &quot;started&quot;}</code>というメッセージが表示されるまで待ちます。</p>
+
+<pre><code class="language-bash">$ docker-compose logs -f elasticsearch
 ...
-elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;server&#34;</span>, <span style="color:#e6db74">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2019-05-12T15:14:17,587+0000&#34;</span>, <span style="color:#e6db74">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;component&#34;</span>: <span style="color:#e6db74">&#34;o.e.n.Node&#34;</span>, <span style="color:#e6db74">&#34;cluster.name&#34;</span>: <span style="color:#e6db74">&#34;docker-cluster&#34;</span>, <span style="color:#e6db74">&#34;node.name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>, <span style="color:#e6db74">&#34;cluster.uuid&#34;</span>: <span style="color:#e6db74">&#34;9AIA4GPNTXegM81GvGx9yw&#34;</span>, <span style="color:#e6db74">&#34;node.id&#34;</span>: <span style="color:#e6db74">&#34;Sze63DhdRDus_m4dsjLFGQ&#34;</span>,  <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;started&#34;</span>  <span style="color:#f92672">}</span>
-</code></pre></div><p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl http://127.0.0.1:9200/_cat/nodes
-172.25.0.5 <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">62</span> 9.31 5.48 3.14 m * elasticsearch
-172.25.0.3 <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">64</span> 9.31 5.48 3.14 d - 34a1ac655be6
-172.25.0.4 <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">59</span> 9.31 5.48 3.14 d - 4b8e00827181
-172.25.0.2 <span style="color:#ae81ff">26</span> <span style="color:#ae81ff">98</span> <span style="color:#ae81ff">64</span> 9.31 5.48 3.14 d - ca4945863dee
-</code></pre></div><h2 id="ブラウザからkibanaにアクセスしてみる">ブラウザからKibanaにアクセスしてみる</h2>
+elasticsearch_1        | {&quot;type&quot;: &quot;server&quot;, &quot;timestamp&quot;: &quot;2019-05-12T15:14:17,587+0000&quot;, &quot;level&quot;: &quot;INFO&quot;, &quot;component&quot;: &quot;o.e.n.Node&quot;, &quot;cluster.name&quot;: &quot;docker-cluster&quot;, &quot;node.name&quot;: &quot;elasticsearch&quot;, &quot;cluster.uuid&quot;: &quot;9AIA4GPNTXegM81GvGx9yw&quot;, &quot;node.id&quot;: &quot;Sze63DhdRDus_m4dsjLFGQ&quot;,  &quot;message&quot;: &quot;started&quot;  }
+</code></pre>
+
+<p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
+
+<pre><code class="language-bash">$ curl http://127.0.0.1:9200/_cat/nodes
+172.25.0.5 30 98 62 9.31 5.48 3.14 m * elasticsearch
+172.25.0.3 22 98 64 9.31 5.48 3.14 d - 34a1ac655be6
+172.25.0.4 27 98 59 9.31 5.48 3.14 d - 4b8e00827181
+172.25.0.2 26 98 64 9.31 5.48 3.14 d - ca4945863dee
+</code></pre>
+
+<h2 id="ブラウザからkibanaにアクセスしてみる">ブラウザからKibanaにアクセスしてみる</h2>
+
 <p>dockerを動作させているマシンのブラウザから<a href="http://127.0.0.1:5601">http://127.0.0.1:5601</a>にアクセスすると、Kibanaの画面が表示されます。</p>
-<p><img src="https://tatsu-i.github.io/img/es7/kibana.png" alt="kibana"></p>
+
+<p><img src="https://tatsu-i.github.io/img/es7/kibana.png" alt="kibana" /></p>
+
 <p>サンプルデータが必要ない場合は<code>Explore on my own</code>をクリックすると利用が開始します。</p>
               
             </div>
@@ -629,12 +656,16 @@ elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p></div>
+
+<p>今回は<a href="https://tatsu-i.github.io/2019/05/infectionmonkey/">前回の記事</a>で作成した感染マシンを使ってフォレンジック調査をやってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -652,7 +683,8 @@ elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
-Infection Monkeyを動かしてみました。</p></div>
+Infection Monkeyを動かしてみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -669,7 +701,8 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。
+</p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -689,12 +722,16 @@ Infection Monkeyを動かしてみました。</p></div>
               <div class="media-content hide-xs font-merryweather"><p>コンピュータフォレンジックの中でHDDやSSDなどのディスクに対するフォレンジックを
 <code>ディスクフォレンジック</code>と呼びます。
 ディスクフォレンジックは大まかに下記のような手順で行われます</p>
+
 <ol>
 <li>調査対象の選定</li>
 <li>調査媒体の保全</li>
 <li>フォレンジック調査</li>
 </ol>
-<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p></div>
+
+<p>今回は既に調査対象が選定されているという前提で、調査媒体の保全作業を行ってみたいと思います。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -711,7 +748,9 @@ Infection Monkeyを動かしてみました。</p></div>
                   May 5, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p></div>
+              <div class="media-content hide-xs font-merryweather"><p>Elasticsearch 7.0がリリースされたそうなので早速Dockerで動かしてみました。</p>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -729,11 +768,14 @@ Infection Monkeyを動かしてみました。</p></div>
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本記事では下記のテーマについて解説したいと思います。</p>
+
 <ul>
 <li>elasticsearchとkibanaの構築</li>
 <li>winlogbeatのインストール</li>
 <li>kibanaダッシュボードの作成</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -752,14 +794,18 @@ Infection Monkeyを動かしてみました。</p></div>
               </span>
               <div class="media-content hide-xs font-merryweather"><p>本サイトはMarkdownで記事を書いた後に<a href="https://gohugo.io/">Hugo</a>でHTMLを生成し、Github Pagesデプロイしています。
 テーマは<a href="https://github.com/kakawait/hugo-tranquilpeak-theme">Tranquilpeak</a>を使用しています。</p>
+
 <p>他にもブログを公開するために下記のサービスを利用しています。</p>
+
 <ul>
 <li><a href="https://github.com/tatsu-i/tatsu-i.github.io">https://github.com/tatsu-i/tatsu-i.github.io</a> (Github Pages)</li>
 <li><a href="https://github.com/tatsu-i/blog">https://github.com/tatsu-i/blog</a> (privateリポジトリ)</li>
 <li><a href="https://circleci.com/">https://circleci.com/</a> (CI/CD)</li>
 <li><a href="https://www.onamae.com">https://www.onamae.com</a> (CNAMEでgithub pagesのドメインを変更)</li>
 <li><a href="https://hackmd.io">https://hackmd.io</a> (記事の下書き用)</li>
-</ul></div>
+</ul>
+
+<p></p></div>
             </div>
             <div style="clear:both;"></div>
             <hr>
