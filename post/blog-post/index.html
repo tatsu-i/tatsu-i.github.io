@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.96.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="本サイトはMarkdownで記事を書いた後にHugoでHTMLを生成し、Github Pagesデプロイしています。
@@ -343,63 +343,62 @@ if (!doNotTrack) {
 <li>はじめに記事の下書きはhackmd.ioに書いておきます</li>
 <li>記事が出来上がったら、blogリポジトリにmarkdownを追加します</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/tatsu-i/blog
-$ hugo new post/new.md
-$ vim post/new.md <span style="color:#f92672">(</span>hackmd.io<span style="color:#f92672">)</span>の下書きをコピペ
-$ git add post/new.md
-$ git commit -m <span style="color:#e6db74">&#34;new post&#34;</span>
-$ git push origin master
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git clone https://github.com/tatsu-i/blog
+</span></span><span style="display:flex;"><span>$ hugo new post/new.md
+</span></span><span style="display:flex;"><span>$ vim post/new.md <span style="color:#f92672">(</span>hackmd.io<span style="color:#f92672">)</span>の下書きをコピペ
+</span></span><span style="display:flex;"><span>$ git add post/new.md
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#34;new post&#34;</span>
+</span></span><span style="display:flex;"><span>$ git push origin master
+</span></span></code></pre></div><ul>
 <li>MasterブランチへpushされるとCirclCIが起動し、Github Pageリポジトリが更新されます</li>
 </ul>
 <p><img src="https://i.imgur.com/2meGAOy.png" alt=""></p>
 <p>以下CirclCIの設定ファイルです。</p>
 <p><code>config.yml</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
-<span style="color:#f92672">jobs</span>:
-  <span style="color:#f92672">build</span>:
-    <span style="color:#f92672">branches</span>:
-      <span style="color:#f92672">only</span>:
-        - <span style="color:#ae81ff">master</span>
-    <span style="color:#f92672">docker</span>:
-      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">cibuilds/hugo:0.55.6</span>
-
-    <span style="color:#f92672">working_directory</span>: <span style="color:#ae81ff">/hugo</span>
-    <span style="color:#f92672">steps</span>:
-      - <span style="color:#f92672">run</span>:
-          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update enviroment</span>
-          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">apk update &amp;&amp; apk add git</span>
-      - <span style="color:#ae81ff">checkout</span>
-      - <span style="color:#f92672">run</span>:
-          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Building blog pages</span>
-          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">hugo -v</span>
-      - <span style="color:#f92672">add_ssh_keys</span>:
-          <span style="color:#f92672">fingerprints</span>:
-            - <span style="color:#e6db74">&#34;git ssh deploy key fingerprint&#34;</span>
-      - <span style="color:#f92672">deploy</span>:
-          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
-          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">./.circleci/deploy.sh</span>
-
-</code></pre></div><p><code>deploy.sh</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash -e
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e"># gitの設定</span>
-git config --global push.default simple
-git config --global user.email <span style="color:#66d9ef">$(</span>git --no-pager show -s --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;%ae&#39;</span> HEAD<span style="color:#66d9ef">)</span>
-git config --global user.name $CIRCLE_USERNAME
-
-<span style="color:#75715e"># Github Pages 用リポジトリのクローン</span>
-git clone git@github.com:tatsu-i/tatsu-i.github.io.git deploy
-
-<span style="color:#75715e"># rsyncでhugoで生成したHTMLをコピー</span>
-rsync -arv --delete public/* ./deploy/
-cp ./CNAME ./deploy/
-cd ./deploy
-
-git add -f .
-git commit -m <span style="color:#e6db74">&#34;Deploy #</span>$CIRCLE_BUILD_NUM<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> true
-git push -f
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">only</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">master</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">docker</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">cibuilds/hugo:0.55.6</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">working_directory</span>: <span style="color:#ae81ff">/hugo</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Update enviroment</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">apk update &amp;&amp; apk add git</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">checkout</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">run</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Building blog pages</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">hugo -v</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">add_ssh_keys</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fingerprints</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#e6db74">&#34;git ssh deploy key fingerprint&#34;</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy to GitHub Pages</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">command</span>: <span style="color:#ae81ff">./.circleci/deploy.sh</span>
+</span></span></code></pre></div><p><code>deploy.sh</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash -e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># gitの設定</span>
+</span></span><span style="display:flex;"><span>git config --global push.default simple
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#66d9ef">$(</span>git --no-pager show -s --format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;%ae&#39;</span> HEAD<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>git config --global user.name $CIRCLE_USERNAME
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Github Pages 用リポジトリのクローン</span>
+</span></span><span style="display:flex;"><span>git clone git@github.com:tatsu-i/tatsu-i.github.io.git deploy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># rsyncでhugoで生成したHTMLをコピー</span>
+</span></span><span style="display:flex;"><span>rsync -arv --delete public/* ./deploy/
+</span></span><span style="display:flex;"><span>cp ./CNAME ./deploy/
+</span></span><span style="display:flex;"><span>cd ./deploy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git add -f .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Deploy #</span>$CIRCLE_BUILD_NUM<span style="color:#e6db74"> </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> true
+</span></span><span style="display:flex;"><span>git push -f
+</span></span></code></pre></div>
               
 
 

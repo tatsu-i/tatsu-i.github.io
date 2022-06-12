@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.96.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="本記事では下記のテーマについて解説したいと思います。
@@ -320,7 +320,7 @@ if (!doNotTrack) {
 </ul>
 <p>はじめにElasticSearchとKibanaを用意します。
 docker-compose.ymlという名前のファイルを下記の内容で作成します。</p>
-<pre tabindex="0"><code>version: '3.4'
+<pre tabindex="0"><code>version: &#39;3.4&#39;
 
 volumes:
   es-data:      # elasticsearch data
@@ -329,48 +329,47 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.0.0
-    ports: [ '5601:5601']
-    depends_on: [ 'elasticsearch' ]
+    ports: [ &#39;5601:5601&#39;]
+    depends_on: [ &#39;elasticsearch&#39; ]
     environment:
       ELASTICSEARCH_HOST: http://elasticsearch:9200
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.0.0
-    volumes: [ 'es-data:/usr/share/elasticsearch/data' ]
-    ports: [ '9200:9200']
+    volumes: [ &#39;es-data:/usr/share/elasticsearch/data&#39; ]
+    ports: [ &#39;9200:9200&#39;]
     environment:
-      discovery.type: 'single-node'
-      bootstrap.memory_lock: 'true'
-      ES_JAVA_OPTS: '-Xms1G -Xmx1G'
+      discovery.type: &#39;single-node&#39;
+      bootstrap.memory_lock: &#39;true&#39;
+      ES_JAVA_OPTS: &#39;-Xms1G -Xmx1G&#39;
     ulimits:
       memlock:
         soft: -1
         hard: -1
-
 </code></pre><h2 id="elasticsearch--kibanaの起動">ElasticSearch &amp; Kibanaの起動</h2>
 <p>dockerを起動します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose up -d
-</code></pre></div><p>{&ldquo;message&rdquo;: &ldquo;started&rdquo;}というメッセージが表示されるまで待ちます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose logs -f elasticsearch
-...
-elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;server&#34;</span>, <span style="color:#e6db74">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2019-05-12T15:14:17,587+0000&#34;</span>, <span style="color:#e6db74">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;component&#34;</span>: <span style="color:#e6db74">&#34;o.e.n.Node&#34;</span>, <span style="color:#e6db74">&#34;cluster.name&#34;</span>: <span style="color:#e6db74">&#34;docker-cluster&#34;</span>, <span style="color:#e6db74">&#34;node.name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>, <span style="color:#e6db74">&#34;cluster.uuid&#34;</span>: <span style="color:#e6db74">&#34;9AIA4GPNTXegM81GvGx9yw&#34;</span>, <span style="color:#e6db74">&#34;node.id&#34;</span>: <span style="color:#e6db74">&#34;Sze63DhdRDus_m4dsjLFGQ&#34;</span>,  <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;started&#34;</span>  <span style="color:#f92672">}</span>
-</code></pre></div><p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker-compose up -d
+</span></span></code></pre></div><p>{&ldquo;message&rdquo;: &ldquo;started&rdquo;}というメッセージが表示されるまで待ちます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker-compose logs -f elasticsearch
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>elasticsearch_1        | <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;server&#34;</span>, <span style="color:#e6db74">&#34;timestamp&#34;</span>: <span style="color:#e6db74">&#34;2019-05-12T15:14:17,587+0000&#34;</span>, <span style="color:#e6db74">&#34;level&#34;</span>: <span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;component&#34;</span>: <span style="color:#e6db74">&#34;o.e.n.Node&#34;</span>, <span style="color:#e6db74">&#34;cluster.name&#34;</span>: <span style="color:#e6db74">&#34;docker-cluster&#34;</span>, <span style="color:#e6db74">&#34;node.name&#34;</span>: <span style="color:#e6db74">&#34;elasticsearch&#34;</span>, <span style="color:#e6db74">&#34;cluster.uuid&#34;</span>: <span style="color:#e6db74">&#34;9AIA4GPNTXegM81GvGx9yw&#34;</span>, <span style="color:#e6db74">&#34;node.id&#34;</span>: <span style="color:#e6db74">&#34;Sze63DhdRDus_m4dsjLFGQ&#34;</span>,  <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;started&#34;</span>  <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>起動が確認できたらCtrl+cで抜けてクラスタの状態を確認します。</p>
 <h2 id="sysmonのインストール">Sysmonのインストール</h2>
 <p>下記のサイトからSysmonをダウンロードします。
 <a href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon">https://docs.microsoft.com/ja-jp/sysinternals/downloads/sysmon</a>
 コマンドプロンプトを管理者権限で実行し下記のコマンドを実行します</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sysmon -accepteula –i –h md5,sha256 –n
-</code></pre></div><h2 id="winlogbeatのインストール">Winlogbeatのインストール</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sysmon -accepteula –i –h md5,sha256 –n
+</span></span></code></pre></div><h2 id="winlogbeatのインストール">Winlogbeatのインストール</h2>
 <p>winlogbeatをダウンロードします
 <a href="https://www.elastic.co/jp/downloads/beats/winlogbeat">https://www.elastic.co/jp/downloads/beats/winlogbeat</a></p>
 <p>ダウンロードしたzipファイルを<code>C:\winlogbeat</code>へ展開します</p>
 <p><img src="https://i.imgur.com/PFJbMWJ.png" alt=""></p>
 <p>展開したファイルの中にある<code>winlogbeat.yml</code>の中身を以下のように書き換えます。</p>
 <pre tabindex="0"><code>output.elasticsearch:
-  hosts: [&quot;192.168.11.30:9200&quot;]
+  hosts: [&#34;192.168.11.30:9200&#34;]
 
 setup.kibana:
-  host: &quot;192.168.11.30:5601&quot;
+  host: &#34;192.168.11.30:5601&#34;
 </code></pre><p>次に管理者権限でコマンドプロンプトを立ち上げ下記のコマンドを実行します。</p>
 <pre tabindex="0"><code>cd C:\winlogbeat
 PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-winlogbeat.ps1
@@ -387,7 +386,6 @@ PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-winlogbeat.
 </code></pre><p>実行結果が</p>
 <pre tabindex="0"><code>Loading dashboards (Kibana must be running and reachable)
 Loaded dashboards
-
 </code></pre><p>と表示されればOKです。</p>
 <p>ブラウザからkibanaへアクセスし、左側サイドバーの<code>Dashboard</code>をクリックします。
 <img src="https://i.imgur.com/N1k9lLE.png" alt=""></p>

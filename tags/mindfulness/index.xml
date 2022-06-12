@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mindfulness on なないろテクノロジー</title>
+    <link>https://tatsu-i.github.io/tags/mindfulness/</link>
+    <description>Recent content in mindfulness on なないろテクノロジー</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 12 Jun 2022 11:14:24 +0000</lastBuildDate><atom:link href="https://tatsu-i.github.io/tags/mindfulness/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>バイノーラルビート使用時の脳波を計測してみる</title>
+      <link>https://tatsu-i.github.io/post/accelbrainbeat1/</link>
+      <pubDate>Sun, 12 Jun 2022 11:14:24 +0000</pubDate>
+      
+      <guid>https://tatsu-i.github.io/post/accelbrainbeat1/</guid>
+      <description>&lt;p&gt;かなり久しぶりの投稿になります。&lt;br&gt;
+最近はマインドフルネスにハマっていて瞑想を日課としています。&lt;br&gt;
+はじめは自己流の瞑想方法だったのですが、これでただしいのか？と気になって色々と調べていくうちに&lt;br&gt;
+バイノーラルビートによる誘導瞑想というものに出会いました。&lt;br&gt;
+ある程度効果は感じられるのですが、脳波が本当に誘導されているのかという疑問から実際に計測してみることにしました。&lt;/p&gt;
+&lt;h2 id=&#34;使用したセンサーとアプリケーション&#34;&gt;使用したセンサーとアプリケーション&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://choosemuse.com/muse-2/&#34;&gt;Muse2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mind-monitor.com/&#34;&gt;Mind Monitor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/sensor.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

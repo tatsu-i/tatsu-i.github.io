@@ -25,7 +25,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.91.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="generator" content="Hugo 0.96.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="tatsui">
 <meta name="keywords" content="">
 <meta name="description" content="Elastic Stackをベースにして作られたEndpoint Detection and Response (EDR)であるWazuhを構築してみました。">
@@ -319,12 +319,12 @@ if (!doNotTrack) {
 </li>
 </ul>
 <h2 id="wazuh-managerのセットアップ">wazuh managerのセットアップ</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/wazuh/wazuh-docker
-$ cd wazuh-docker
-$ echo <span style="color:#e6db74">&#39;vm.max_map_count = 262144&#39;</span> | sudo tee -a /etc/sysctl.conf
-$ sudo sysctl -p
-$ docker-compose up -d
-</code></pre></div><p>起動が完了したら、コンテナを動かしているホストへブラウザから接続してみます。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git clone https://github.com/wazuh/wazuh-docker
+</span></span><span style="display:flex;"><span>$ cd wazuh-docker
+</span></span><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#39;vm.max_map_count = 262144&#39;</span> | sudo tee -a /etc/sysctl.conf
+</span></span><span style="display:flex;"><span>$ sudo sysctl -p
+</span></span><span style="display:flex;"><span>$ docker-compose up -d
+</span></span></code></pre></div><p>起動が完了したら、コンテナを動かしているホストへブラウザから接続してみます。
 私の環境ではコンテナを<code>192.168.11.30</code>で実行しているため接続先は下記のようになります</p>
 <p><code>https://192.168.11.30</code></p>
 <p>またユーザ名とパスワードを聞かれるので下記のように入力します。</p>
@@ -348,10 +348,10 @@ windows版をダウンロードします。</p>
 私の環境だと<code>192.168.11.252</code>でした。
 <img src="https://i.imgur.com/D6JRjtb.png" alt=""></p>
 <p>LinuxからRestAPIを使ってAgentを登録を行います。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -u foo:bar -k -X POST -d <span style="color:#e6db74">&#39;name=NewAgent&amp;ip=192.168.11.252&#39;</span> https://192.168.11.30:55000/agents
-
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;error&#34;</span>:0,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;001&#34;</span>,<span style="color:#e6db74">&#34;key&#34;</span>:<span style="color:#e6db74">&#34;MDAxIE5ld0FnZW50IDE5Mi4xNjguMTEuMjUyIGQzZTgxOWY0YWVkYzQ4MWJmOTcxNDg3OWUwNGM1ZDQwNzE5ZWE5YTcwMmI4ZjllNTdhMTE5YzNiYTgxZGQ2NWQ=&#34;</span><span style="color:#f92672">}}</span>                                             
-</code></pre></div><p>先程出力されたkeyとwazuh-manager(コンテナを実行しているホスト)のipアドレスを入力し<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -u foo:bar -k -X POST -d <span style="color:#e6db74">&#39;name=NewAgent&amp;ip=192.168.11.252&#39;</span> https://192.168.11.30:55000/agents
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;error&#34;</span>:0,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;001&#34;</span>,<span style="color:#e6db74">&#34;key&#34;</span>:<span style="color:#e6db74">&#34;MDAxIE5ld0FnZW50IDE5Mi4xNjguMTEuMjUyIGQzZTgxOWY0YWVkYzQ4MWJmOTcxNDg3OWUwNGM1ZDQwNzE5ZWE5YTcwMmI4ZjllNTdhMTE5YzNiYTgxZGQ2NWQ=&#34;</span><span style="color:#f92672">}}</span>                                             
+</span></span></code></pre></div><p>先程出力されたkeyとwazuh-manager(コンテナを実行しているホスト)のipアドレスを入力し<!-- raw HTML omitted -->
 saveボタンをクリックします
 <img src="https://i.imgur.com/C1Cdw7l.png" alt=""></p>
 <p>wazuh-managerのagentsからwindows7のマシンが登録されている確認できます。
