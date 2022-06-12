@@ -6,7 +6,18 @@
     <description>Recent content in mindfulness on なないろテクノロジー</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 12 Jun 2022 11:14:24 +0000</lastBuildDate><atom:link href="https://tatsu-i.github.io/tags/mindfulness/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Jun 2022 16:33:47 +0000</lastBuildDate><atom:link href="https://tatsu-i.github.io/tags/mindfulness/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pythonを使って精神世界を計測してみる①</title>
+      <link>https://tatsu-i.github.io/post/accelbrainbeat2/</link>
+      <pubDate>Sun, 12 Jun 2022 16:33:47 +0000</pubDate>
+      
+      <guid>https://tatsu-i.github.io/post/accelbrainbeat2/</guid>
+      <description>&lt;p&gt;怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。&lt;/p&gt;
+&lt;p&gt;ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証は&lt;a href=&#34;https://qiita.com/tatsui/items/6308563300bebd8ef61b&#34;&gt;こちら&lt;/a&gt;の記事を参照してみてください。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>バイノーラルビート使用時の脳波を計測してみる</title>
       <link>https://tatsu-i.github.io/post/accelbrainbeat1/</link>

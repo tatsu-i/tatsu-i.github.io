@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/tatsu-i.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "tatsui",
+    
+    "image": "https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308"
+    
+  },
+  "name":"なないろテクノロジー",
+  "description":"\u003cp\u003e怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。\u003c\/p\u003e\n\u003cp\u003eヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。\nバイノーラルビートによる脳波誘導の検証は\u003ca href=\u0022https:\/\/qiita.com\/tatsui\/items\/6308563300bebd8ef61b\u0022\u003eこちら\u003c\/a\u003eの記事を参照してみてください。\u003c\/p\u003e",
+  "url":"https:\/\/tatsu-i.github.io\/post\/accelbrainbeat2\/",
+  "keywords":"[]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.96.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="tatsui">
+<meta name="keywords" content="">
+<meta name="description" content="怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。
+ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証はこちらの記事を参照してみてください。">
+
+
+<meta property="og:description" content="怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。
+ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証はこちらの記事を参照してみてください。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pythonを使って精神世界を計測してみる①">
+<meta name="twitter:title" content="Pythonを使って精神世界を計測してみる①">
+<meta property="og:url" content="https://tatsu-i.github.io/post/accelbrainbeat2/">
+<meta property="twitter:url" content="https://tatsu-i.github.io/post/accelbrainbeat2/">
+<meta property="og:site_name" content="なないろテクノロジー">
+<meta property="og:description" content="怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。
+ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証はこちらの記事を参照してみてください。">
+<meta name="twitter:description" content="怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。
+ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証はこちらの記事を参照してみてください。">
+<meta property="og:locale" content="ja">
+
+  
+    <meta property="article:published_time" content="2022-06-12T16:33:47">
+  
+  
+    <meta property="article:modified_time" content="2022-06-12T16:33:47">
+  
+  
+  
+    
+      <meta property="article:section" content="mindfulness">
+    
+      <meta property="article:section" content="braintech">
+    
+  
+  
+    
+      <meta property="article:tag" content="mindfulness">
+    
+      <meta property="article:tag" content="braintech">
+    
+      <meta property="article:tag" content="binauralbeat">
+    
+      <meta property="article:tag" content="healthcare">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=640">
+
+
+
+
+
+  <meta property="og:image" content="https://tatsu-i.github.io/img/cyber-s.jpg">
+  <meta property="twitter:image" content="https://tatsu-i.github.io/img/cyber-s.jpg">
+
+
+    <title>Pythonを使って精神世界を計測してみる①</title>
+
+    <link rel="icon" href="https://tatsu-i.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tatsu-i.github.io/post/accelbrainbeat2/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://tatsu-i.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139884711-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tatsu-i.github.io/" aria-label="ホームページへ">なないろテクノロジー</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tatsu-i.github.io/#about" aria-label="リンクを開く: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=90" alt="プロフィール画像" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tatsu-i.github.io/#about" aria-label="著者についてもっと読む">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="プロフィール画像" />
+        </a>
+        <h4 class="sidebar-profile-name">tatsui</h4>
+        
+          <h5 class="sidebar-profile-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">ホーム</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">カテゴリー</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">タグ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">アーカイブ</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">プロフィール</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/about/privacy-policy" title="プライバシーポリシー">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-exclamation-triangle"></i>
+      
+      <span class="sidebar-button-desc">プライバシーポリシー</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/tatsu-i" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tatsu-i.github.io/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Pythonを使って精神世界を計測してみる①
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-06-12T16:33:47Z">
+        
+  6 12, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>カテゴリー</span>
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/mindfulness">mindfulness</a>, 
+    
+      <a class="category-link" href="https://tatsu-i.github.io/categories/braintech">braintech</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>怪しいタイトルからはじまりましたが、ヘミシンク ゲートウェイ・エクスペリエンスシリーズを使った誘導瞑想時の脳活動を計測してみようというものです。</p>
+<p>ヘミシンクとはバイノーラルビートと呼ばれる左右から異なる周波数の音をヘッドホンで聴くことによって、左右の周波数差分だけ脳波が誘導されるという技術になります。
+バイノーラルビートによる脳波誘導の検証は<a href="https://qiita.com/tatsui/items/6308563300bebd8ef61b">こちら</a>の記事を参照してみてください。</p>
+<h2 id="ヘミシンクとは">ヘミシンクとは</h2>
+<p>「ヘミシンク」とは超心理学者ロバート・モンローが設立した「モンロー研究所」の体外離脱を体験するために開発された音楽であり、米陸軍の諜報部に籍を置いていたウェイン・マクドネル氏によって1983年に評価が行われ、2003年にCIAが機密指定を解除しています。</p>
+<ul>
+<li><a href="https://www.cia.gov/readingroom/docs/CIA-RDP96-00788R001700210016-5.pdf">Analysis and Assessment of Gateway Process（ゲートウェイプロセスの分析と評価）</a></li>
+</ul>
+<p>筆者キャロライン・ハスキンズ（アメリカの科学技術ジャーナリスト）によると、米軍は1970年代後半から80年代にかけて超心理学に興味を示し「プロジェクト・センターレーン 」と呼ばれた計画の元、1983年6月、米陸軍マクネドネル中佐に「モンロー研究所」が提供する「ヘミシンク」というサービスの評価を命じたとのことです。</p>
+<ul>
+<li><a href="https://motherboard.vice.com/en_us/article/pad4a9/the-us-army-funded-astral-projection-and-hypnosis-research-in-the-80s">The US Army Funded Astral Projection and Hypnosis Research in the 80s</a></li>
+</ul>
+<p>マクドネル中佐はこの命により、バージニア州にあるモンロー研究所で7日間のプログラムを体験し、プログラムで得た経験を陸軍フォーマットで29ページの報告書（以下「マクドネル・リポート」と呼ぶ）にまとめている。</p>
+<ul>
+<li><a href="https://www.bttp.info/app/download/11049747794/CIA-McDonnell-report.pdf">マクドネル・リポート</a></li>
+</ul>
+<p>そしてこの「ヘミシンク」は家庭学習用のCDが販売されており、誰でも簡単に購入することができるようになっています。</p>
+<h2 id="ヘミシンクに期待される効果">ヘミシンクに期待される効果</h2>
+<p>ヘミシンクといえば体外離脱をイメージするかもしれませんが、様々な研究から以下のような効能が期待されています。</p>
+<ul>
+<li>リラクゼーション</li>
+<li>記憶力の向上</li>
+<li>瞬発力の向上</li>
+<li>トラウマの解消</li>
+<li>催眠・サブリミナル等</li>
+</ul>
+<h2 id="ヘミシンク音の仕組み">ヘミシンク音の仕組み</h2>
+<p>音源を入手するためにメルカリでヘミシンク ゲートウェイ・エクスペリエンスシリーズの1巻〜7巻までまとめて購入しました。
+価格は高めの設定が多いですが、それなりに人気なのかPCに取り込んだあとすぐに転売できました。
+また英語でよければ<a href="https://www.youtube.com/watch?v=uqlaRHyZJqU">こちら</a>に1巻の導入部分だけが公開されています。</p>
+<p>すべてのCDに共通しているのは、ヘミシンク音声を聞きながら音声ガイダンスで指示されたものをイメージしたり、突然湧き上がったイメージや声などを記憶しメモを残すといった瞑想プログラムだということです。
+ヘミシンクでは滞在している精神世界を「フォーカス」という名前で定義しており、以下のように分類しています。</p>
+<ul>
+<li>フォーカス10
+<ul>
+<li>身体が眠り、意識が目覚めている状態肉体は完全にリラックスして､  肉体からの知覚信号はほとんどなく、心だけが目覚めて意識がはっきりした状態です。</li>
+</ul>
+</li>
+<li>フォーカス12
+<ul>
+<li>意識の拡大した状態・肉体的睡眠は深まりますが､肉体からの覚信号によって普段は抑えられていたやり方これは、人間の意識がは知覚し始めます。</li>
+<li>肉体へ完全に依存した状態から解放され､意識の自由を初めて認識する状態です。</li>
+</ul>
+</li>
+<li>フォーカス15
+<ul>
+<li>時間のない状態･フォーカス15では、意識が肉体の知覚から段階的に解放され、時間のない状態を経験し始めます。</li>
+<li>心が目覚めた状態のままであることを除くと、深い睡眠状態に似ています。</li>
+</ul>
+</li>
+<li>フォーカス21
+<ul>
+<li>他のエネルギー系・人間の時空のの端であり、非常に深い眠状態にありますが、意識は明瞭で活発に活動しています。</li>
+</ul>
+</li>
+<li>フォーカス23
+<ul>
+<li>肉体が死んだ直後の状態・非常に活発な領域で、肉体の死を経てきた人たちで溢れています。</li>
+<li>彼らは激しい感情の中にいたり、あるいは、思考停止状態や錯乱した状態にいます。</li>
+</ul>
+</li>
+<li>フォーカス25
+<ul>
+<li>人間世界の歴史に最近登場した主要な組織化されたの信念の表れ。</li>
+<li>これには、宗教活動により区別される、キリスト教、仏教、ヒンドゥ教、ユダヤ教 イスラム教などの宗教とそのすべての宗派が含まれます。</li>
+<li>この世界を訪れた人は、自分の人生で重要な要素であった信念領域にのみ引き付けられます。</li>
+<li>それ以外の信念領域はぼんやりとした揺らめくパターンとして認識されます。</li>
+<li>個人の知識、経験、および関心によりはっきり見える度合いが異なります。</li>
+</ul>
+</li>
+<li>フォーカス27
+<ul>
+<li>現在組織化されつつある人間思考能力の先端「公園」のある場所</li>
+<li>肉体の死によるトラウマから回復し、休息するための中継点。</li>
+</ul>
+</li>
+</ul>
+<p>ヘミシンク音はこれらのフォーカスにそれぞれ対応しており、誘導される脳波パターンも異なります。
+脳波を計測する前にこれらの音がどの周波数へ誘導しようとしているのかを先に解析します。</p>
+<h2 id="ヘミシンク音の解析">ヘミシンク音の解析</h2>
+<p>ヘミシンクは左右の周波数に差を作ることによって脳波を誘導する技術です。
+例えばキャリア周波数が100Hz(左:100Hz 右:104Hz)の音を聴くことによって4Hzの脳波(シータ波)へと誘導されます。
+つまり音声ファイルを読み込ませて左右チャネルに分割し、周波数のピーク値を比較することで誘導脳波を特定することができます。
+以下が誘導脳波を特定するためのコードです</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> wavio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.signal <span style="color:#f92672">import</span> find_peaks
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_plot_channel</span>(channel, f_s, threshold, show):
+</span></span><span style="display:flex;"><span>    fft_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fft(channel)
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> len(fft_x)
+</span></span><span style="display:flex;"><span>    freq <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fftfreq(n, <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>f_s)
+</span></span><span style="display:flex;"><span>    fft_x_shifted <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fftshift(fft_x)
+</span></span><span style="display:flex;"><span>    freq_shifted <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fftshift(freq)
+</span></span><span style="display:flex;"><span>    freq <span style="color:#f92672">=</span> freq_shifted
+</span></span><span style="display:flex;"><span>    db <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log10(np<span style="color:#f92672">.</span>abs(fft_x_shifted))
+</span></span><span style="display:flex;"><span>    index, peaks <span style="color:#f92672">=</span> find_peaks(db, height<span style="color:#f92672">=</span>threshold)
+</span></span><span style="display:flex;"><span>    peak_freq <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    current_freq <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> index:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 聞こえにくい音は除外</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> freq[i] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">and</span> freq[i] <span style="color:#f92672">&gt;</span> current_freq<span style="color:#f92672">+</span><span style="color:#ae81ff">30</span>: 
+</span></span><span style="display:flex;"><span>            current_freq <span style="color:#f92672">=</span> freq[i]
+</span></span><span style="display:flex;"><span>            peak_freq<span style="color:#f92672">.</span>add(int(freq[i]))
+</span></span><span style="display:flex;"><span>    peak_freq <span style="color:#f92672">=</span> sorted(peak_freq)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> show:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ピーク値: </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Hz, &#39;</span><span style="color:#f92672">.</span>join(map(str, peak_freq))<span style="color:#e6db74">}</span><span style="color:#e6db74">Hz&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>axhline(y<span style="color:#f92672">=</span>threshold, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;c&#39;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>plot(freq, db)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;Frequency (Hz)&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;dB&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>yscale(<span style="color:#e6db74">&#39;log&#39;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>xlim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4096</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>clf()
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> peak_freq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_spec</span>(file_name, th1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, th2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>, show<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>    File <span style="color:#f92672">=</span> wavio<span style="color:#f92672">.</span>read(file_name)
+</span></span><span style="display:flex;"><span>    rate <span style="color:#f92672">=</span> File<span style="color:#f92672">.</span>rate
+</span></span><span style="display:flex;"><span>    channel_1 <span style="color:#f92672">=</span> File<span style="color:#f92672">.</span>data[:,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    channel_2 <span style="color:#f92672">=</span> File<span style="color:#f92672">.</span>data[:,<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    ch1_peak <span style="color:#f92672">=</span> _plot_channel(channel_1, rate, th1, show)
+</span></span><span style="display:flex;"><span>    ch2_peak <span style="color:#f92672">=</span> _plot_channel(channel_2, rate, th2, show)
+</span></span><span style="display:flex;"><span>    offset_peak <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(ch2_peak) <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>array(ch1_peak)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;ピークの差分(誘導脳波): </span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;Hz, &#39;</span><span style="color:#f92672">.</span>join(map(str, offset_peak))<span style="color:#e6db74">}</span><span style="color:#e6db74">Hz&#34;</span>)
+</span></span></code></pre></div><p>試しにフォーカス10の音声を解析してみます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;フォーカス10.wav&#34;</span>
+</span></span><span style="display:flex;"><span>plot_spec(file_name, th1<span style="color:#f92672">=</span><span style="color:#ae81ff">170</span>, th2<span style="color:#f92672">=</span><span style="color:#ae81ff">170</span>, show<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><h3 id="実行結果">実行結果</h3>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/421494/25fc8335-15a4-1733-0525-ec41facbc21d.png" alt="f.png">
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/421494/3214be1c-2e2f-8f3d-4019-e39deee92524.png" alt="f1.png"></p>
+<pre tabindex="0"><code>右チャンネルのピーク値: 99Hz, 298Hz, 496Hz
+左チャンネルのピーク値: 103Hz, 302Hz, 492Hz
+ピークの差分(誘導脳波): 4Hz, 4Hz, -4Hz
+</code></pre><p>解析の結果からフォーカス10は3つのキャリア周波数を使って、4Hz(シータ波)へと誘導しようとしていることがわかります。
+同じように他のフォーカスレベルも解析してみます。
+<code>キャリア周波数が分かると同じ音源が作成できてしまう</code>のでピークの差分だけ載せています。</p>
+<table>
+<thead>
+<tr>
+<th>フォーカスレベル</th>
+<th>ピークの差分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>フォーカス12</td>
+<td>1Hz, 4Hz, 4Hz, 4Hz, 10Hz, 10Hz, 10Hz</td>
+</tr>
+<tr>
+<td>フォーカス15</td>
+<td>-4Hz, -3Hz, 8Hz, -7Hz, -8Hz</td>
+</tr>
+<tr>
+<td>フォーカス21</td>
+<td>-1Hz, -4Hz, -4Hz, 8Hz, -7Hz, -8Hz</td>
+</tr>
+<tr>
+<td>フォーカス23</td>
+<td>4Hz, 4Hz, 4Hz, 16Hz, 16Hz</td>
+</tr>
+<tr>
+<td>フォーカス25</td>
+<td>4Hz, 4Hz, 4Hz, 3Hz, 4Hz, 3Hz, 4Hz, 3Hz</td>
+</tr>
+<tr>
+<td>フォーカス27</td>
+<td>-1Hz, 4Hz, 4Hz, 4Hz, 4Hz, 4Hz</td>
+</tr>
+</tbody>
+</table>
+<p>これらの脳波にどのような意味があるのか分かりませんが、とりあえず機械的に各フォーカスの理想とする脳波パターンを分類することができました。</p>
+<p>次回はヘミシンクを実践しながら脳波計測してみた結果を書こうと思います。
+ここまで読んでいただきありがとうございます。</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">タグ</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/mindfulness/">mindfulness</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/braintech/">braintech</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/binauralbeat/">binauralbeat</a>
+
+  <a class="tag tag--primary tag--small" href="https://tatsu-i.github.io/tags/healthcare/">healthcare</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/accelbrainbeat1/" data-tooltip="バイノーラルビート使用時の脳波を計測してみる" aria-label="前: バイノーラルビート使用時の脳波を計測してみる">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Facebookで共有" aria-label="Facebookで共有">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Linkedinで共有" aria-label="Linkedinで共有">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/tatsu-i.github.io\/post\/accelbrainbeat2\/';
+        
+          this.page.identifier = '\/post\/accelbrainbeat2\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 tatsui. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">次</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://tatsu-i.github.io/post/accelbrainbeat1/" data-tooltip="バイノーラルビート使用時の脳波を計測してみる" aria-label="前: バイノーラルビート使用時の脳波を計測してみる">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">前</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="この記事を共有する">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Facebookで共有" aria-label="Facebookで共有">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Twitterで共有" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://tatsu-i.github.io/post/accelbrainbeat2/" title="Linkedinで共有" aria-label="Linkedinで共有">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="コメントを残す">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="トップに戻る">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Faccelbrainbeat2%2F" aria-label="Facebookで共有">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Facebookで共有</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Faccelbrainbeat2%2F" aria-label="Twitterで共有">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitterで共有</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftatsu-i.github.io%2Fpost%2Faccelbrainbeat2%2F" aria-label="Linkedinで共有">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Linkedinで共有</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/be76902a8801be381281839fdfc50308?s=110" alt="プロフィール画像" />
+    
+    <h4 id="about-card-name">tatsui</h4>
+    
+      <div id="about-card-bio">セキュリティエンジニアをやっています。データマイニングや機械学習に興味があります。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        インテリジェンスアナリスト
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tatsu-i.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://tatsu-i.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
